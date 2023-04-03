@@ -66,14 +66,21 @@ def populate_menu(move_list: list) -> dict:
 
 
 def valid_battle_choice(menu: dict, choice: str):
-    if int(choice) not in menu:
-        print("That is not a valid numeric choice, please select from the following:\n")
+
+    try:
+        choice = int(choice)
+    except ValueError:
+        print("That is not a valid numeric choice, please select from the following:")
         return False
     else:
-        return True
+        if int(choice) not in menu:
+            print("That is not a valid numeric choice, please select from the following:")
+            return False
+        else:
+            return True
 
 
-def potion_check(player: dict, menu: dict, choice: str):
+def potion_check(player: dict, choice: str):
     if choice == '3' and player["potions"] < 1:
         print("You're out of potions! Do something else!")
         return False
@@ -91,11 +98,11 @@ def action_select(player):
         choice = input()
         action = valid_battle_choice(menu, choice)
         if choice == "3":
-            action = potion_check(player, menu, choice)
+            action = potion_check(player, choice)
     return choice
 
 
-def player_turn(choice, player, enemy):
+def player_turn(choice: str, player: dict, enemy: dict):
     if choice == "1":
         return attack(player, enemy)
     if choice == "2":
