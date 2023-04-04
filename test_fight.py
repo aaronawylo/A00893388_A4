@@ -38,12 +38,12 @@ def attack(player: dict, enemy: dict) -> int:
     return 0
 
 
-def defend(player: dict) -> int:
+def defend(player: dict, _) -> int:
     print("You steel yourself for the oncoming attack!")
     return player["def"]
 
 
-def potion(player: dict) -> int:
+def potion(player: dict, _) -> int:
     player["potions"] -= 1
     player["hp"] += 5
     print(f'You drank the potion and healed 5 HP!\nYour HP is now {player["hp"]}')
@@ -61,7 +61,7 @@ def menu_print(menu: dict) -> None:
         print(str(every) + ":", menu[every])
 
 
-def populate_menu(move_list: list) -> dict:
+def populate_menu(move_list: tuple) -> dict:
     return dict(enumerate(move_list, 1))
 
 
@@ -88,11 +88,12 @@ def potion_check(player: dict, choice: str):
         return True
 
 
-def action_select(player):
+def action_select(player: dict) -> str:
 
-    test_actions = ["Attack", "Defend", "Use Potion"]
+    test_actions = ("Attack", "Defend", "Use Potion")
     menu = populate_menu(test_actions)
     action = False
+    choice = None
     while not action:
         menu_print(menu)
         choice = input()
@@ -102,13 +103,9 @@ def action_select(player):
     return choice
 
 
-def player_turn(choice: str, player: dict, enemy: dict):
-    if choice == "1":
-        return attack(player, enemy)
-    if choice == "2":
-        return defend(player)
-    if choice == "3":
-        return potion(player)
+def player_turn(choice: int, player: dict, enemy: dict):
+    modes = (attack, defend, potion)
+    return modes[choice-1](player, enemy)
 
 
 def fight(player):
@@ -122,7 +119,8 @@ def fight(player):
         print(f'Your HP is {player["hp"]}!\nThe {enemy["name"]}\'s HP is {enemy["hp"]}!')
         print("Choose an action:")
         choice = action_select(player)
-        guard = player_turn(choice, player, enemy)
+
+        guard = player_turn(int(choice), player, enemy)
         if enemy["hp"] > 0:
             enemy_attack(player, enemy, guard)
     if enemy["hp"] < 1:

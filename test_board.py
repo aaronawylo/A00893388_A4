@@ -27,7 +27,7 @@ def check_template_room_count(templates, room):
 def create_list_of_room_ids(templates, length):
 
     template_list = [key for key in templates for _ in range(templates[key][2])]
-    empty_number = length - len(template_list)
+    empty_number = length - len(template_list) - 2
     while empty_number > 0:
         template_list.append("emptyroom")
         empty_number -= 1
@@ -48,6 +48,8 @@ def populate_board(row, column):
     board_length = len(board_numbers)
     room_ids = create_list_of_room_ids(example_dictionary, board_length)
     random.shuffle(room_ids)
+    room_ids.insert(0, "startroom")
+    room_ids.append('bossroom')
     final_board = dict(zip(board_numbers, room_ids))
     return final_board
 
