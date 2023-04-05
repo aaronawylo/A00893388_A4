@@ -39,6 +39,27 @@ def enemy_randomizer(file_name) -> str:
 
 def valid_battle_choice(menu: dict, choice: str):
     """
+    Returns a Boolean if the choice typed in is a key in the menu
+
+    :param menu: a dictionary with integers as keys
+    :param choice: a string
+    :precondition: menu must contain integers as keys
+    :precondition: choice must be a string
+    :postcondition: returns a Boolean stating if the choice entered exists in the menu
+    :return: a Boolean stating if the choice entered exists in the menu
+    >>> test_menu = {1: "Attack", 2: "Defend", 3: "Use Potion"}
+    >>> valid_battle_choice(test_menu, "1")
+    True
+
+    >>> test_menu = {1: "Attack", 2: "Defend", 3: "Use Potion"}
+    >>> valid_battle_choice(test_menu, "4")
+    That is not a valid numeric choice, please select from the following:
+    False
+
+    >>> test_menu = {1: "Attack", 2: "Defend", 3: "Use Potion"}
+    >>> valid_battle_choice(test_menu, "I can't read")
+    That is not a valid numeric choice, please select from the following:
+    False
     """
     try:
         choice = int(choice)
@@ -166,7 +187,6 @@ def fight(player):
         print(f'Your HP is {player["Current HP"]}!\nThe {enemy["name"]}\'s HP is {enemy["hp"]}!')
         print("Choose an action:")
         choice = action_select(player)
-
         guard = player_turn(int(choice), player, enemy)
         if enemy["hp"] > 0:
             enemy_attack(player, enemy, guard)
