@@ -8,12 +8,12 @@ def is_alive(player: dict) -> bool:
     :precondition: character must contain a key named "Current HP" with a number as the value
     :postcondition: returns a Boolean if the character is alive or not (health above zero)
     :return: a Boolean stating if the character is alive
-    >>> example_player = {"hp": 5}
+    >>> example_player = {"Current HP": 5}
     >>> is_alive(example_player)
     True
 
-    >>> example_player = {"hp": 0}
+    >>> example_player = {"Current HP": 0}
     >>> is_alive(example_player)
     False
     """
-    return player["hp"] > 0
+    return player["Current HP"] > 0
