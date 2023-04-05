@@ -7,13 +7,13 @@ def menu_print(menu: dict) -> None:
         print(str(every) + ":", menu[every])
 
 
-def populate_menu(menu_list: tuple) -> dict:
+def populate_menu(menu_list: list) -> dict:
     return dict(enumerate(menu_list, 1))
 
 
 def open_json_file(file_name: str) -> dict:
     if not os.path.isfile(file_name):
-        raise FileNotFoundError("Your shit doesn't work")
+        raise FileNotFoundError("Your file doesn't exist :)")
     else:
         with open(file_name) as file_object:
             loaded_json = json.load(file_object)
