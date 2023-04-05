@@ -5,6 +5,24 @@ A0089388
 
 
 def attack(player: dict, enemy: dict) -> int:
+    """
+    Returns a guard value of zero after dealing damage to the enemy
+
+    :param player: a dictionary containing the keys "level" and "atk"
+    :param enemy: a dictionary containing the key "hp"
+    :precondition: player must contain keys named "level" and "atk"
+    :precondition: enemy must contain a key named "hp"
+    :postcondition: deals the correct damage to the enemy's "hp"
+    :postcondition: returns a guard value of zero
+    :return: the integer zero
+    >>> test_player = {"level": 1, "atk": 2}
+    >>> test_enemy = {"hp": 3}
+    >>> attack(test_player, test_enemy)
+    You have dealt 2 damage!
+    0
+    >>> test_enemy["hp"]
+    1
+    """
     damage = player["level"] * player["atk"]
     enemy["hp"] -= damage
     print(f'You have dealt {damage} damage!')

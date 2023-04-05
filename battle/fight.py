@@ -15,7 +15,7 @@ character = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 2
 
 def enemy_randomizer(file_name) -> str:
     """
-    Gives a random string of an enemy file location in the beastiary
+    Gives a random string of an enemy file
 
     :param file_name: the name of a json file
     :precondition: file_name must exist
@@ -37,7 +37,7 @@ def enemy_randomizer(file_name) -> str:
         return enemy_file
 
 
-def valid_battle_choice(menu: dict, choice: str):
+def valid_battle_choice(menu: dict, choice: str) -> bool:
     """
     Returns a Boolean if the choice typed in is a key in the menu
 
