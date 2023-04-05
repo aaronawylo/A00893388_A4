@@ -166,10 +166,25 @@ def player_turn(choice: int, player: dict, enemy: dict):
     :precondition: enemy must contain keys labelled "name", "hp", "atk" and "exp"
     :postcondition: returns the function chosen by the player
     :return: a function that the player has chosen to act
-    >>> test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+    >>> test_player = {"Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "potions": 3}
     >>> test_enemy = {"name": "Slime", "hp": 10, "atk": 2, "exp": 20}
     >>> player_turn(1, test_player, test_enemy)
-    attack(test_player, test_enemy)
+    You have dealt 2 damage!
+    0
+
+    >>> test_player = {"Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "potions": 3}
+    >>> test_enemy = {"name": "Slime", "hp": 10, "atk": 2, "exp": 20}
+    >>> player_turn(2, test_player, test_enemy)
+    You steel yourself for the oncoming attack!
+    1
+
+
+    >>> test_player = {"Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "potions": 3}
+    >>> test_enemy = {"name": "Slime", "hp": 10, "atk": 2, "exp": 20}
+    >>> player_turn(3, test_player, test_enemy)
+    You drank the potion and healed 0 HP!
+    Your HP is now 20
+    0
     """
 
     modes = (attack, defend, potion)
