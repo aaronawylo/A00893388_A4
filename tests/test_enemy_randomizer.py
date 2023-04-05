@@ -1,5 +1,5 @@
 from unittest import TestCase
-from battle.test_fight import enemy_randomizer
+from battle.fight import enemy_randomizer
 from unittest.mock import patch
 import io
 
