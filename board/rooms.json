@@ -1,17 +1,17 @@
 {
   "fireroom": [
     "The room is on fire, you take 2 damage!",
-    "fireroom()",
+    "fireroom",
     1
   ],
   "healroom": [
     "You are bathed in a warm light, you heal 2 HP",
-    "healroom()",
+    "healroom",
     3
   ],
   "poisontrap": [
     "The room fills with gas, you take 1 damage!",
-    "poisontrap()",
+    "poisontrap",
     2
   ]
 }
