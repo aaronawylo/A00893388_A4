@@ -54,6 +54,31 @@ def valid_battle_choice(menu: dict, choice: str):
 
 
 def potion_check(player: dict, choice: str) -> bool:
+    """
+    Returns a Boolean if a potion exists to be used
+
+    :param player: a dictionary containing the key "potions"
+    :param choice: a string of an integer between 1 and 3
+    :precondition: player must contain a key named "potions"
+    :precondition: choice must be a string
+    :postcondition: returns a Boolean stating if a potion is available to use
+    :return: a Boolean stating if a potion is available to use
+    >>> test_player = {"potions": 3}
+    >>> test_choice = '3'
+    >>> potion_check(test_player, test_choice)
+    True
+
+    >>> test_player = {"potions": 0}
+    >>> test_choice = '3'
+    >>> potion_check(test_player, test_choice)
+    You're out of potions! Do something else!
+    False
+
+    >>> test_player = {"potions": 0}
+    >>> test_choice = '1'
+    >>> potion_check(test_player, test_choice)
+    True
+    """
     if "potions" not in player:
         raise KeyError("Make a better character!")
     else:
