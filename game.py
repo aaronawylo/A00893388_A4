@@ -2,47 +2,37 @@ import copy
 import random
 from copy import deepcopy
 
+from test_board import populate_board, import_room_templates
+from utilities.miscellaneous import open_json_file
+
+
 # identifier = key
 #     description
 #     function call
 #     number of rooms possible
 
 
-def populate_board():
-
-    example_dictionary = {"poisontrap": ("The room fills with gas, you take 1 damage!", "poisontrap()", 2, True),
-                          "healroom": ("You are bathed in a warm light, you heal 2 HP", "healroom()", 3, True),
-                          "fireroom": ("The room is on fire, you take 2 damage!", "fireroom()", 1, True)}
-    example_board = {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (2, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1):
-                     'Empty Room', (2, 1): 'Empty Room', (0, 2): 'Empty Room', (1, 2): 'Empty Room', (2, 2):
-                     'Empty Room'}
-    rooms_to_populate = copy.deepcopy(example_dictionary)
-    while rooms_to_populate:
-        for every in rooms_to_populate.value[4]:
-            print(every)
-
-
-def make_board(row: int, column: int) -> dict:
-    """
-    Create a dictionary comprised of rows multiplied by columns keys with value of 'Empty room'
-
-    :param row: an integer that is equal or greater than 2
-    :param column: an integer tha is equal or greater than 2
-    :precondition: row must be an integer that is equal or greater than 2
-    :precondition: column must be an integer that is equal or greater than 2
-    :postcondition: creates a dictionary with keys of rows by columns with value of 'Empty room'
-    :return: a dictionary comprised of rows multiplied by columns keys with value of 'Empty room'
-    :raises ValueError: if number is not an integer or is less than 2
-    >>> make_board(3, 3)
-    {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (2, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room', \
-(2, 1): 'Empty Room', (0, 2): 'Empty Room', (1, 2): 'Empty Room', (2, 2): 'Empty Room'}
-
-    >>> make_board(2, 2)
-    {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room'}
-    """
-    if row < 2 or column < 2:
-        raise ValueError("Dimension must be 2 or greater")
-    return {(lateral, longitudinal): 'Empty Room' for longitudinal in range(column) for lateral in range(row)}
+# def make_board(row: int, column: int) -> dict:
+#     """
+#     Create a dictionary comprised of rows multiplied by columns keys with value of 'Empty room'
+#
+#     :param row: an integer that is equal or greater than 2
+#     :param column: an integer tha is equal or greater than 2
+#     :precondition: row must be an integer that is equal or greater than 2
+#     :precondition: column must be an integer that is equal or greater than 2
+#     :postcondition: creates a dictionary with keys of rows by columns with value of 'Empty room'
+#     :return: a dictionary comprised of rows multiplied by columns keys with value of 'Empty room'
+#     :raises ValueError: if number is not an integer or is less than 2
+#     >>> make_board(3, 3)
+#     {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (2, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room', \
+# (2, 1): 'Empty Room', (0, 2): 'Empty Room', (1, 2): 'Empty Room', (2, 2): 'Empty Room'}
+#
+#     >>> make_board(2, 2)
+#     {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room'}
+#     """
+#     if row < 2 or column < 2:
+#         raise ValueError("Dimension must be 2 or greater")
+#     return {(lateral, longitudinal): 'Empty Room' for longitudinal in range(column) for lateral in range(row)}
 
 
 def make_character() -> dict:
@@ -57,7 +47,7 @@ def make_character() -> dict:
     return {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
 
 
-def describe_current_location(board: dict, character: dict) -> None:
+def describe_current_location(board: dict, character: dict, room_list: dict) -> None:
     """
     Return the room description located in the value that matches the character's location
 
@@ -85,9 +75,16 @@ def describe_current_location(board: dict, character: dict) -> None:
     if (character["X-coordinate"], character["Y-coordinate"]) not in board:
         raise KeyError("Character is out of bounds")
     else:
-        print(board[(character["X-coordinate"], character["Y-coordinate"])])
-        print("You are currently at (" + str(character["X-coordinate"]) + ", " + str(character["Y-coordinate"]) + ")")
-        print("Your HP is: " + str(character["Current HP"]))
+        if get_board_id(board, character) == 'startroom' or 'bossroom':
+            pass
+        else:
+            print(room_list[get_board_id(board, character)][0])
+            print("You are currently at (" + str(character["X-coordinate"]) + ", " + str(character["Y-coordinate"]) + ")")
+            print("Your HP is: " + str(character["Current HP"]))
+
+
+def get_board_id(board, character):
+    return board[(character["X-coordinate"], character["Y-coordinate"])]
 
 
 def get_user_choice() -> int:
@@ -259,17 +256,19 @@ def is_alive(character: dict) -> bool:
 def game():
     rows = 5
     columns = 5
-    board = make_board(rows, columns)
+    board = populate_board(rows, columns)
     character = make_character()
+    room_list = import_room_templates()
     achieved_goal = False
     while not achieved_goal and is_alive(character):
-        describe_current_location(board, character)
+        describe_current_location(board, character, room_list)
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
         else:
             print("You can't move that way!")
+
         there_is_a_challenger = check_for_foes()
         if there_is_a_challenger:
             guessing_game(character)
