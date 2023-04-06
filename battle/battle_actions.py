@@ -38,11 +38,12 @@ def attack(player: dict, enemy: dict) -> int:
     return 0
 
 
-def defend(player: dict, *_) -> int:
+def defend(player: dict, _) -> int:
     """
     Returns the correct guard value from the player's level multiplied by defense
 
     :param player: a dictionary containing the keys "level" and "def"
+    :param _: Unused
     :precondition: player must contain the keys "level" and "def"
     :precondition: keys "level" and "def" must have integers for values
     :postcondition: returns the correct guard value after multiplying level and def together
@@ -63,11 +64,12 @@ def defend(player: dict, *_) -> int:
     return player["level"] * player["def"]
 
 
-def potion(player: dict, *_) -> int:
+def potion(player: dict, _) -> int:
     """
     Returns a guard value of zero after healing the player
 
     :param player: a dictionary containing the keys "Max HP", "Current HP" and "potions"
+    :param _: Unused
     :precondition: player must contain the keys "Max HP", "Current HP" and "potions"
     :precondition: keys "Max HP", "Current HP" and "potions" must have integers for values
     :postcondition: recovers player's current HP by or up to max HP
