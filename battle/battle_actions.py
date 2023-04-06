@@ -12,6 +12,7 @@ def attack(player: dict, enemy: dict) -> int:
     :param enemy: a dictionary containing the key "hp"
     :precondition: player must contain keys named "level" and "atk"
     :precondition: enemy must contain a key named "hp"
+    :precondition: all three necessary keys have integers as values
     :postcondition: deals the correct damage to the enemy's "hp"
     :postcondition: returns a guard value of zero
     :return: the integer zero
@@ -22,6 +23,14 @@ def attack(player: dict, enemy: dict) -> int:
     0
     >>> test_enemy["hp"]
     1
+
+    >>> test_player = {"level": 3, "atk": 4}
+    >>> test_enemy = {"hp": 20}
+    >>> attack(test_player, test_enemy)
+    You have dealt 12 damage!
+    0
+    >>> test_enemy["hp"]
+    8
     """
     damage = player["level"] * player["atk"]
     enemy["hp"] -= damage
