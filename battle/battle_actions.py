@@ -63,14 +63,41 @@ def defend(player: dict, *_) -> int:
     return player["level"] * player["def"]
 
 
-def potion(player: dict, _) -> int:
+def potion(player: dict, *_) -> int:
+    """
+    Returns a guard value of zero after healing the player
+
+    :param player: a dictionary containing the keys "Max HP", "Current HP" and "potions"
+    :precondition: player must contain the keys "Max HP", "Current HP" and "potions"
+    :precondition: keys "Max HP", "Current HP" and "potions" must have integers for values
+    :postcondition: recovers player's current HP by or up to max HP
+    :postcondition: returns a guard value of zero
+    :return: the integer zero
+    >>> test_player = {"Max HP": 20, "Current HP": 12, "potions": 3}
+    >>> test_enemy = {"hp": 3}
+    >>> potion(test_player, test_enemy)
+    You drank the potion and healed 5 HP!
+    Your HP is now 17!
+    0
+    >>> test_player["Current HP"]
+    17
+
+    >>> test_player = {"Max HP": 30, "Current HP": 28, "potions": 2}
+    >>> test_enemy = {"hp": 3}
+    >>> potion(test_player, test_enemy)
+    You drank the potion and healed 2 HP!
+    Your HP is now 30!
+    0
+    >>> test_player["Current HP"]
+    30
+    """
     player["potions"] -= 1
     player["Current HP"] += 5
     healed = 5
     if player["Current HP"] > player["Max HP"]:
         healed = 5 - (player["Current HP"] - player["Max HP"])
         player["Current HP"] = player["Max HP"]
-    print(f'You drank the potion and healed {healed} HP!\nYour HP is now {player["Current HP"]}')
+    print(f'You drank the potion and healed {healed} HP!\nYour HP is now {player["Current HP"]}!')
     return 0
 
 
