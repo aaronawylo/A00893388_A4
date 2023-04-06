@@ -38,7 +38,27 @@ def attack(player: dict, enemy: dict) -> int:
     return 0
 
 
-def defend(player: dict, _) -> int:
+def defend(player: dict, *_) -> int:
+    """
+    Returns the correct guard value from the player's level multiplied by defense
+
+    :param player: a dictionary containing the keys "level" and "def"
+    :precondition: player must contain the keys "level" and "def"
+    :precondition: keys "level" and "def" must have integers for values
+    :postcondition: returns the correct guard value after multiplying level and def together
+    :return: an integer denoting the guard value to reduce enemy attack by
+    >>> test_player = {"level": 1, "def": 2}
+    >>> test_enemy = {"hp": 20}
+    >>> defend(test_player, test_enemy)
+    You steel yourself for the oncoming attack!
+    2
+
+    >>> test_player = {"level": 3, "def": 3}
+    >>> test_enemy = {"hp": 20}
+    >>> defend(test_player, test_enemy)
+    You steel yourself for the oncoming attack!
+    9
+    """
     print("You steel yourself for the oncoming attack!")
     return player["level"] * player["def"]
 
