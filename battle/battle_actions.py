@@ -102,6 +102,32 @@ def potion(player: dict, *_) -> int:
 
 
 def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
+    """
+    Deals damage to the player's Current HP using the enemy's attack minus the guard point
+
+    :param player: a dictionary containing the key "Current HP"
+    :param enemy: a dictionary containing the key "atk"
+    :param guard: an integer
+    :precondition: player must contain a key called "Current HP"
+    :precondition: player's "Current HP" key must have an integer value
+    :precondition: enemy must contain keys called "atk" and "name"
+    :precondition: enemy's "atk" key must have an integer value
+    :precondition: guard must be an integer
+    :postcondition: deals the correct amount of damage to the player's HP
+    >>> test_player = {"Current HP": 12}
+    >>> test_enemy = {"name": "Slime", "atk": 2}
+    >>> enemy_attack(test_player, test_enemy, 1)
+    Slime has dealt 1 damage!
+    >>> test_player["Current HP"]
+    11
+
+    >>> test_player = {"Current HP": 5}
+    >>> test_enemy = {"name": "Wolf", "atk": 4}
+    >>> enemy_attack(test_player, test_enemy, 2)
+    Wolf has dealt 2 damage!
+    >>> test_player["Current HP"]
+    3
+    """
     enemy_damage = enemy["atk"] - guard
     if enemy_damage < 0:
         enemy_damage = 0
