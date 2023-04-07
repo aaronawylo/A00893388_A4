@@ -9,11 +9,17 @@ from utilities.miscellaneous import open_json_file
 
 
 def import_room_templates() -> dict:
-    list_to_add = open_json_file('rooms.json')
+    dynamics_to_add = open_json_file('rooms.json')
     statics_to_add = open_json_file('static_rooms.json')
     for every, item in statics_to_add.items():
-        list_to_add[every] = item
-    return list_to_add
+        dynamics_to_add[every] = item
+    return dynamics_to_add
+
+
+def quote_strip(room_dictionary: dict) -> dict:
+    for key, value in room_dictionary.items():
+        room_dictionary[key][1] = room_dictionary[key][1].strip('"\'')
+    return room_dictionary
 
 
 def create_list_of_room_ids(templates, length):

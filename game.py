@@ -2,7 +2,7 @@ import random
 
 
 from character.character import make_character
-from test_board import populate_board, import_room_templates
+from test_board import populate_board, import_room_templates, quote_strip
 
 
 def describe_current_location(board: dict, player: dict, room_list: dict) -> None:
@@ -21,17 +21,17 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
     :return: a string describing the room the character is in
     :raises ValueError: if character coordinate values are not in the parameter of board
     >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'emptyroom'}
-    >>> example_character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
+    >>> example_player = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
     >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroomfunction"]}
-    >>> describe_current_location(example_board, example_character, example_room_list)
+    >>> describe_current_location(example_board, example_player, example_room_list)
     This is an empty room.
     You are currently at (0, 0)
     Your HP is: 5
 
     >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'puppyroom'}
-    >>> example_character = {"X-coordinate": 1, "Y-coordinate": 1, "Current HP": 5}
+    >>> example_player = {"X-coordinate": 1, "Y-coordinate": 1, "Current HP": 5}
     >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroomfunction"], "puppyroom": ["PUPPIES."]}
-    >>> describe_current_location(example_board, example_character, example_room_list)
+    >>> describe_current_location(example_board, example_player, example_room_list)
     PUPPIES.
     You are currently at (1, 1)
     Your HP is: 5
@@ -44,13 +44,32 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
         print("Your HP is: " + str(player["Current HP"]))
 
 
-def get_board_id(board, character):
-    return board[(character["X-coordinate"], character["Y-coordinate"])]
+def get_board_id(board, player):
+    """
+    Returns the value of attached to the key where the player is currently
+
+    :param board: a dictionary with integer-only tuples as keys and a string as values
+    :param player: a dictionary containing keys of "X-coordinate" and "Y-coordinate" that are in param board
+    :precondition: board must have only integers in the tuple and a string as values
+    :precondition: player must contain two keys named "X-coordinate" and "Y-coordinate" with values in param board
+    :postcondition: returns the value attached to the tuple coordinate key in board
+    :return: the value attached to the tuple coordinate key in board
+    >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'emptyroom'}
+    >>> example_player = {"X-coordinate": 0, "Y-coordinate": 0}
+    >>> get_board_id(example_board, example_player)
+    'emptyroom'
+
+    >>> example_board = {(0, 0): 'puppyroom', (1, 0): 'kittyroom', (0, 1): 'birdyroom', (1, 1): 'foxroom'}
+    >>> example_player = {"X-coordinate": 1, "Y-coordinate": 0}
+    >>> get_board_id(example_board, example_player)
+    'kittyroom'
+    """
+    return board[(player["X-coordinate"], player["Y-coordinate"])]
 
 
 def get_user_choice() -> int:
     """
-    Return a number between 1 and 4 for the character to move in
+    Return a number between 1 and 4 for the player to move in
 
     :postcondition: returns an integer between 1 and 4
     :return: an integer between 1 and 4
@@ -220,7 +239,7 @@ def game():
     board = populate_board(rows, columns)
     character = make_character()
     room_list = import_room_templates()
-
+    room_list = quote_strip(room_list)
     achieved_goal = False
     while not achieved_goal and is_alive(character):
         describe_current_location(board, character, room_list)

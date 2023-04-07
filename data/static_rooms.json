@@ -11,6 +11,7 @@
   ],
   "emptyroom": [
     "An empty room, time to move to somewhere more exciting.",
+    "emptyroom",
     0
   ]
 }
