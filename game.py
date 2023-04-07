@@ -35,16 +35,7 @@ from utilities.miscellaneous import open_json_file
 #     return {(lateral, longitudinal): 'Empty Room' for longitudinal in range(column) for lateral in range(row)}
 
 
-def make_character() -> dict:
-    """
-    Create a character that starts at (0, 0) and has HP of 5
 
-    :postcondition: creates a character that starts at (0, 0) and has HP of 5
-    :return: a dictionary of a character that starts at (0, 0) and has HP of 5
-    >>> make_character()
-    {'X-coordinate': 0, 'Y-coordinate': 0, 'Current HP': 5}
-    """
-    return {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
 
 
 def describe_current_location(board: dict, character: dict, room_list: dict) -> None:

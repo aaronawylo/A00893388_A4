@@ -1,3 +1,21 @@
+"""
+Aaron Lo
+A0089388
+"""
+
+
+def make_character() -> dict:
+    """
+    Create a character that starts at (0, 0) and contains all necessary information
+
+    :postcondition: creates a character that starts at (0, 0) and contains all necessary information
+    :return: a dictionary of a character that starts at (0, 0) and contains all necessary information
+    >>> make_character()
+    {'X-coordinate': 0, 'Y-coordinate': 0, 'Max HP': 20, 'Current HP': 20, 'atk': 2, 'def': 1, 'level': 1, 'potions': \
+3, 'Battle Actions': ['Attack', 'Defend', 'Use Potion']}
+    """
+    return {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1,
+            "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
 
 
 def is_alive(player: dict) -> bool:
