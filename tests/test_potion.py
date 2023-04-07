@@ -74,3 +74,39 @@ class TestPotion(TestCase):
         actual = mock_output.getvalue()
         expected = 'You drank the potion and healed -3 HP!\nYour HP is now 10!\n'
         self.assertEqual(actual, expected)
+
+    def test_potion_no_potions_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"Max HP": 10, "Current HP": 13, "Should have went shopping": -4}
+            test_enemy = {"hp": 5}
+            potion(test_player, test_enemy)
+
+    def test_potion_no_current_hp_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"Max HP": 10, "Am I dead?": 13, "potions": -4}
+            test_enemy = {"hp": 5}
+            potion(test_player, test_enemy)
+
+    def test_potion_no_max_hp_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"Am I even a character": 10, "Current HP": 13, "potions": -4}
+            test_enemy = {"hp": 5}
+            potion(test_player, test_enemy)
+
+    def test_potion_no_number_in_potions(self):
+        with self.assertRaises(TypeError):
+            test_player = {"Max HP": 10, "Current HP": 13, "potions": "I'm"}
+            test_enemy = {"hp": 5}
+            potion(test_player, test_enemy)
+
+    def test_potion_no_number_in_current_hp(self):
+        with self.assertRaises(TypeError):
+            test_player = {"Max HP": 10, "Current HP": "a", "potions": -4}
+            test_enemy = {"hp": 5}
+            potion(test_player, test_enemy)
+
+    def test_potion_no_number_in_max_hp(self):
+        with self.assertRaises(TypeError):
+            test_player = {"Max HP": "dummy", "Current HP": 13, "potions": -4}
+            test_enemy = {"hp": 5}
+            potion(test_player, test_enemy)

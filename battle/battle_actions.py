@@ -105,6 +105,8 @@ def potion(player: dict, _) -> int:
     """
     if "potions" not in player or "Current HP" not in player or "Max HP" not in player:
         raise KeyError("Read my docstrings, dummy.")
+    elif type(player["potions"]) != int or type(player["Current HP"]) != int or type(player["Max HP"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
     else:
         player["potions"] -= 1
         player["Current HP"] += 5
