@@ -145,4 +145,5 @@ class TestEnemyAttack(TestCase):
         with self.assertRaises(TypeError):
             test_player = {"Current HP": 20}
             test_enemy = {"name": "Slime", "atk": 5}
-            enemy_attack(test_player, test_enemy, "2")
+            test_guard = 1.2
+            enemy_attack(test_player, test_enemy, test_guard)

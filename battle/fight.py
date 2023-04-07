@@ -136,10 +136,13 @@ def character_actions(player: dict) -> list:
 
 def action_select(player: dict) -> str:
     """
-    Returns an string between
+    Returns a string of an integer
 
-    :param player:
-    :return:
+    :param player: a dictionary containing the keys "potions" and "Battle Actions"
+    :precondition: player must contain the keys "potions" and "Battle Actions"
+    :precondition: player's "Battle Actions" must have a value of a list containing actions
+    :postcondition: returns a string of an integer
+    :return: a string of an integer
     """
     test_actions = character_actions(player)
     menu = populate_menu(test_actions)

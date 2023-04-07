@@ -46,4 +46,3 @@ class TestPotionCheck(TestCase):
         actual = mock_output.getvalue()
         expected = "You're out of potions! Do something else!\n"
         self.assertEqual(actual, expected)
-
