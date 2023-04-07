@@ -73,8 +73,20 @@ class TestDefend(TestCase):
             test_enemy = {"hp": 5}
             defend(test_player, test_enemy)
 
-    def test_defend_no_attack_in_player(self):
+    def test_defend_no_def_in_player(self):
         with self.assertRaises(KeyError):
             test_player = {"level": 2, "Glass Cannon Baby": 3}
+            test_enemy = {"hp": 5}
+            defend(test_player, test_enemy)
+
+    def test_defend_no_number_in_level(self):
+        with self.assertRaises(TypeError):
+            test_player = {"level": "oopsies", "def": 3}
+            test_enemy = {"hp": 5}
+            defend(test_player, test_enemy)
+
+    def test_defend_no_number_in_def(self):
+        with self.assertRaises(TypeError):
+            test_player = {"level": 2, "def": "poopsies"}
             test_enemy = {"hp": 5}
             defend(test_player, test_enemy)

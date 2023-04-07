@@ -67,6 +67,8 @@ def defend(player: dict, _) -> int:
     """
     if "level" not in player or "def" not in player:
         raise KeyError("Read my docstrings, dummy.")
+    elif type(player["level"]) != int or type(player["def"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
     else:
         print("You steel yourself for the oncoming attack!")
         return player["level"] * player["def"]
