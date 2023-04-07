@@ -63,7 +63,7 @@ def defend(player: dict, _) -> int:
     You steel yourself for the oncoming attack!
     9
     """
-    if "level" or "atk" not in player:
+    if "level" not in player or "def" not in player:
         raise KeyError("Read my docstrings, dummy.")
     else:
         print("You steel yourself for the oncoming attack!")

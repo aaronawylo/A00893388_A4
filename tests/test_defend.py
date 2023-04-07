@@ -66,3 +66,15 @@ class TestDefend(TestCase):
         actual = defend(test_player, test_enemy)
         expected = 20
         self.assertEqual(actual, expected)
+
+    def test_attack_no_level_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"forgot I can get stronger": 2, "def": 3}
+            test_enemy = {"hp": 5}
+            defend(test_player, test_enemy)
+
+    def test_attack_no_attack_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"level": 2, "Glass Cannon Baby": 3}
+            test_enemy = {"hp": 5}
+            defend(test_player, test_enemy)
