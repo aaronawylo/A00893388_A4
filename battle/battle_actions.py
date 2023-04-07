@@ -32,10 +32,13 @@ def attack(player: dict, enemy: dict) -> int:
     >>> test_enemy["hp"]
     8
     """
-    damage = player["level"] * player["atk"]
-    enemy["hp"] -= damage
-    print(f'You have dealt {damage} damage!')
-    return 0
+    if "level" not in player or "atk" not in player or "hp" not in enemy:
+        raise KeyError("Read my docstrings, dummy.")
+    else:
+        damage = player["level"] * player["atk"]
+        enemy["hp"] -= damage
+        print(f'You have dealt {damage} damage!')
+        return 0
 
 
 def defend(player: dict, _) -> int:
@@ -60,8 +63,11 @@ def defend(player: dict, _) -> int:
     You steel yourself for the oncoming attack!
     9
     """
-    print("You steel yourself for the oncoming attack!")
-    return player["level"] * player["def"]
+    if "level" or "atk" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    else:
+        print("You steel yourself for the oncoming attack!")
+        return player["level"] * player["def"]
 
 
 def potion(player: dict, _) -> int:

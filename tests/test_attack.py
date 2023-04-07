@@ -83,3 +83,21 @@ class TestAttack(TestCase):
         actual = mock_output.getvalue()
         expected = 'You have dealt -6 damage!\n'
         self.assertEqual(actual, expected)
+
+    def test_attack_no_level_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"forgot I can get stronger": 2, "atk": 3}
+            test_enemy = {"hp": 5}
+            attack(test_player, test_enemy)
+
+    def test_attack_no_attack_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"level": 2, "I have a wet noodle": 3}
+            test_enemy = {"hp": 5}
+            attack(test_player, test_enemy)
+
+    def test_attack_no_hp_in_enemy(self):
+        with self.assertRaises(KeyError):
+            test_player = {"level": 2, "atk": 3}
+            test_enemy = {"Just Shadow Boxing": 5}
+            attack(test_player, test_enemy)
