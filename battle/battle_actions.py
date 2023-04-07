@@ -145,6 +145,10 @@ def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
     >>> test_player["Current HP"]
     3
     """
+    if "Current HP" not in player or "atk" not in enemy or "name" not in enemy:
+        raise KeyError("Read my docstrings, dummy.")
+    elif type(enemy["atk"]) != int or type(player["Current HP"]) != int or type(guard) != int:
+        raise TypeError("Read my docstrings, dummy.")
     enemy_damage = enemy["atk"] - guard
     if enemy_damage < 0:
         enemy_damage = 0

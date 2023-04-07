@@ -110,3 +110,39 @@ class TestEnemyAttack(TestCase):
         actual = mock_output.getvalue()
         expected = 'Friend has dealt 0 damage!\n'
         self.assertEqual(actual, expected)
+
+    def test_enemy_attack_current_hp_not_in_player(self):
+        with self.assertRaises(KeyError):
+            test_player = {"Got nothing": 20}
+            test_enemy = {"name": "Slime", "atk": 5}
+            enemy_attack(test_player, test_enemy, 1)
+
+    def test_defend_atk_not_in_enemy(self):
+        with self.assertRaises(KeyError):
+            test_player = {"Current HP": 20}
+            test_enemy = {"name": "Slime", "Whoops": 5}
+            enemy_attack(test_player, test_enemy, 1)
+
+    def test_defend_name_not_in_enemy(self):
+        with self.assertRaises(KeyError):
+            test_player = {"Current HP": 20}
+            test_enemy = {"Hi Chris": "Slime", "atk": 5}
+            enemy_attack(test_player, test_enemy, 1)
+
+    def test_defend_no_number_in_current_hp(self):
+        with self.assertRaises(TypeError):
+            test_player = {"Current HP": "20"}
+            test_enemy = {"name": "Slime", "atk": 5}
+            enemy_attack(test_player, test_enemy, 1)
+
+    def test_defend_no_number_in_atk(self):
+        with self.assertRaises(TypeError):
+            test_player = {"Current HP": 20}
+            test_enemy = {"name": "Slime", "atk": "5"}
+            enemy_attack(test_player, test_enemy, 1)
+
+    def test_defend_no_number_in_guard(self):
+        with self.assertRaises(TypeError):
+            test_player = {"Current HP": 20}
+            test_enemy = {"name": "Slime", "atk": 5}
+            enemy_attack(test_player, test_enemy, "2")
