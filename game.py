@@ -1,77 +1,47 @@
-import copy
 import random
-from copy import deepcopy
 
+
+from character.character import make_character
 from test_board import populate_board, import_room_templates
-from utilities.miscellaneous import open_json_file
 
 
-# identifier = key
-#     description
-#     function call
-#     number of rooms possible
-
-
-# def make_board(row: int, column: int) -> dict:
-#     """
-#     Create a dictionary comprised of rows multiplied by columns keys with value of 'Empty room'
-#
-#     :param row: an integer that is equal or greater than 2
-#     :param column: an integer tha is equal or greater than 2
-#     :precondition: row must be an integer that is equal or greater than 2
-#     :precondition: column must be an integer that is equal or greater than 2
-#     :postcondition: creates a dictionary with keys of rows by columns with value of 'Empty room'
-#     :return: a dictionary comprised of rows multiplied by columns keys with value of 'Empty room'
-#     :raises ValueError: if number is not an integer or is less than 2
-#     >>> make_board(3, 3)
-#     {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (2, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room', \
-# (2, 1): 'Empty Room', (0, 2): 'Empty Room', (1, 2): 'Empty Room', (2, 2): 'Empty Room'}
-#
-#     >>> make_board(2, 2)
-#     {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room'}
-#     """
-#     if row < 2 or column < 2:
-#         raise ValueError("Dimension must be 2 or greater")
-#     return {(lateral, longitudinal): 'Empty Room' for longitudinal in range(column) for lateral in range(row)}
-
-
-
-
-
-def describe_current_location(board: dict, character: dict, room_list: dict) -> None:
+def describe_current_location(board: dict, player: dict, room_list: dict) -> None:
     """
     Return the room description located in the value that matches the character's location
 
     :param board: a dictionary with integer-only tuples as keys and a string as values
-    :param character: a dictionary containing keys of "X-coordinate" and "Y-coordinate" that are in param board
+    :param player: a dictionary containing keys of "X-coordinate" and "Y-coordinate" that are in param board
+    :param room_list: a dictionary containing keys matching the values in board
     :precondition: board must have only integers in the tuple and a string as values
-    :precondition: character must contain two keys named "X-coordinate" and "Y-coordinate" with values in param board
+    :precondition: player must contain two keys named "X-coordinate" and "Y-coordinate" with values in param board
+    :precondition: player must contain a key named "Current HP" with an integer for a value
+    :precondition: room_list must have keys matching the values in board
+    :precondition: room_list must have a string denoting the description of the room at index 0 of the value list
     :postcondition: returns the string description of the room the character is in
     :return: a string describing the room the character is in
     :raises ValueError: if character coordinate values are not in the parameter of board
-    >>> example_board = {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'Empty Room'}
+    >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'emptyroom'}
     >>> example_character = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
-    >>> describe_current_location(example_board, example_character)
-    Empty Room
+    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroomfunction"]}
+    >>> describe_current_location(example_board, example_character, example_room_list)
+    This is an empty room.
     You are currently at (0, 0)
     Your HP is: 5
 
-    >>> example_board = {(0, 0): 'Empty Room', (1, 0): 'Empty Room', (0, 1): 'Empty Room', (1, 1): 'PUPPY ROOM!'}
-    >>> example_character = {"X-coordinate": 1, "Y-coordinate": 1, "Current HP": 2}
-    >>> describe_current_location(example_board, example_character)
-    PUPPY ROOM!
+    >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'puppyroom'}
+    >>> example_character = {"X-coordinate": 1, "Y-coordinate": 1, "Current HP": 5}
+    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroomfunction"], "puppyroom": ["PUPPIES."]}
+    >>> describe_current_location(example_board, example_character, example_room_list)
+    PUPPIES.
     You are currently at (1, 1)
-    Your HP is: 2
+    Your HP is: 5
     """
-    if (character["X-coordinate"], character["Y-coordinate"]) not in board:
-        raise KeyError("Character is out of bounds")
+    if (player["X-coordinate"], player["Y-coordinate"]) not in board:
+        raise KeyError("Player is out of bounds")
     else:
-        if get_board_id(board, character) == 'startroom' or 'bossroom':
-            pass
-        else:
-            print(room_list[get_board_id(board, character)][0])
-            print("You are currently at (" + str(character["X-coordinate"]) + ", " + str(character["Y-coordinate"]) + ")")
-            print("Your HP is: " + str(character["Current HP"]))
+        print(room_list[get_board_id(board, player)][0])
+        print("You are currently at (" + str(player["X-coordinate"]) + ", " + str(player["Y-coordinate"]) + ")")
+        print("Your HP is: " + str(player["Current HP"]))
 
 
 def get_board_id(board, character):
@@ -250,9 +220,11 @@ def game():
     board = populate_board(rows, columns)
     character = make_character()
     room_list = import_room_templates()
+
     achieved_goal = False
     while not achieved_goal and is_alive(character):
         describe_current_location(board, character, room_list)
+
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
         if valid_move:
