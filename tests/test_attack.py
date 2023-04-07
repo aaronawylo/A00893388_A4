@@ -101,3 +101,21 @@ class TestAttack(TestCase):
             test_player = {"level": 2, "atk": 3}
             test_enemy = {"Just Shadow Boxing": 5}
             attack(test_player, test_enemy)
+
+    def test_attack_no_number_in_level(self):
+        with self.assertRaises(TypeError):
+            test_player = {"level": "oops", "atk": 3}
+            test_enemy = {"hp": 5}
+            attack(test_player, test_enemy)
+
+    def test_attack_no_number_in_atk(self):
+        with self.assertRaises(TypeError):
+            test_player = {"level": 2, "atk": "my bad"}
+            test_enemy = {"hp": 5}
+            attack(test_player, test_enemy)
+
+    def test_attack_no_number_in_hp(self):
+        with self.assertRaises(TypeError):
+            test_player = {"level": 2, "atk": 3}
+            test_enemy = {"hp": "I'm a moron"}
+            attack(test_player, test_enemy)

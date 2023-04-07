@@ -34,6 +34,8 @@ def attack(player: dict, enemy: dict) -> int:
     """
     if "level" not in player or "atk" not in player or "hp" not in enemy:
         raise KeyError("Read my docstrings, dummy.")
+    elif type(player["level"]) != int or type(player["atk"]) != int or type(enemy["hp"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
     else:
         damage = player["level"] * player["atk"]
         enemy["hp"] -= damage
@@ -99,14 +101,17 @@ def potion(player: dict, _) -> int:
     >>> test_player["Current HP"]
     30
     """
-    player["potions"] -= 1
-    player["Current HP"] += 5
-    healed = 5
-    if player["Current HP"] > player["Max HP"]:
-        healed = 5 - (player["Current HP"] - player["Max HP"])
-        player["Current HP"] = player["Max HP"]
-    print(f'You drank the potion and healed {healed} HP!\nYour HP is now {player["Current HP"]}!')
-    return 0
+    if "potions" not in player or "Current HP" not in player or "Max HP" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    else:
+        player["potions"] -= 1
+        player["Current HP"] += 5
+        healed = 5
+        if player["Current HP"] > player["Max HP"]:
+            healed = 5 - (player["Current HP"] - player["Max HP"])
+            player["Current HP"] = player["Max HP"]
+        print(f'You drank the potion and healed {healed} HP!\nYour HP is now {player["Current HP"]}!')
+        return 0
 
 
 def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
