@@ -214,5 +214,9 @@ def heal_sanctuary(player: dict) -> None:
     >>> test_player["Current HP"]
     30
     """
-
-    player["Current HP"] = player["Max HP"]
+    if "Current HP" not in player or "Max HP" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    elif type(player["Current HP"]) != int or type(player["Max HP"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
+    else:
+        player["Current HP"] = player["Max HP"]
