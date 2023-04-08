@@ -25,12 +25,6 @@ def import_room_templates() -> dict:
     return dynamics_to_add
 
 
-def quote_strip(room_dictionary: dict) -> dict:
-    for key, value in room_dictionary.items():
-        room_dictionary[key][1] = room_dictionary[key][1].strip('"\'')
-    return room_dictionary
-
-
 def create_list_of_room_ids(templates, length):
 
     template_list = [key for key in templates for _ in range(templates[key][2])]
