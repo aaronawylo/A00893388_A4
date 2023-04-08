@@ -210,6 +210,8 @@ def fight(player):
             enemy_attack(player, enemy, guard)
     if enemy["hp"] < 1:
         print(f'You have slain {enemy["name"]}!')
+        player["exp"] += enemy["exp"]
+        print(f'You have gained {enemy["exp"]} EXP!')
     if not is_alive(player):
         print("YOU HAVE DIED.")
 
