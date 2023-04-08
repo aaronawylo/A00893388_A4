@@ -129,7 +129,12 @@ def atk_up_room(player: dict) -> None:
     >>> test_player["atk"]
     6
     """
-    player['atk'] += 1
+    if "atk" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    elif type(player["atk"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
+    else:
+        player['atk'] += 1
 
 
 def def_up_room(player: dict) -> None:
