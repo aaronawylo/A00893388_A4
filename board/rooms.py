@@ -1,3 +1,7 @@
+"""
+Aaron Lo
+A0089388
+"""
 
 
 def fire_room(player: dict) -> None:
@@ -18,7 +22,12 @@ def fire_room(player: dict) -> None:
     >>> test_player["Current HP"]
     13
     """
-    player["Current HP"] -= 5
+    if "Current HP" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    elif type(player["Current HP"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
+    else:
+        player["Current HP"] -= 5
 
 
 def poison_room(player: dict) -> None:
@@ -39,7 +48,12 @@ def poison_room(player: dict) -> None:
     >>> test_player["Current HP"]
     16
     """
-    player["Current HP"] -= 2
+    if "Current HP" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    elif type(player["Current HP"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
+    else:
+        player["Current HP"] -= 2
 
 
 def heal_room(player: dict) -> None:
