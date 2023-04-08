@@ -109,10 +109,10 @@ def potion(player: dict, _) -> int:
         raise TypeError("Read my docstrings, dummy.")
     else:
         player["potions"] -= 1
-        player["Current HP"] += 5
-        healed = 5
+        player["Current HP"] += 10
+        healed = 10
         if player["Current HP"] > player["Max HP"]:
-            healed = 5 - (player["Current HP"] - player["Max HP"])
+            healed = 10 - (player["Current HP"] - player["Max HP"])
             player["Current HP"] = player["Max HP"]
         print(f'You drank the potion and healed {healed} HP!\nYour HP is now {player["Current HP"]}!')
         return 0

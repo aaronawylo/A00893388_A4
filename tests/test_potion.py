@@ -17,20 +17,20 @@ class TestPotion(TestCase):
         self.assertEqual(actual, expected)
 
     def test_potion_health_recovered(self):
-        test_player = {"Max HP": 20, "Current HP": 12, "potions": 3}
+        test_player = {"Max HP": 20, "Current HP": 10, "potions": 3}
         test_enemy = {"hp": 3}
         potion(test_player, test_enemy)
         actual = test_player["Current HP"]
-        expected = 17
+        expected = 20
         self.assertEqual(actual, expected)
 
     @patch('sys.stdout', new_callable=io.StringIO)
     def test_potion_print_output(self, mock_output):
-        test_player = {"Max HP": 20, "Current HP": 12, "potions": 3}
+        test_player = {"Max HP": 20, "Current HP": 10, "potions": 3}
         test_enemy = {"hp": 20}
         potion(test_player, test_enemy)
         actual = mock_output.getvalue()
-        expected = 'You drank the potion and healed 5 HP!\nYour HP is now 17!\n'
+        expected = 'You drank the potion and healed 10 HP!\nYour HP is now 20!\n'
         self.assertEqual(actual, expected)
 
     def test_potion_health_maxed_out(self):
