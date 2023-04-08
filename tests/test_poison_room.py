@@ -40,7 +40,7 @@ class TestPoisonRoom(TestCase):
             test_player = {"forgot I can get stronger": 2, "atk": 3}
             poison_room(test_player)
 
-    def test_attack_no_number_in_current_hp(self):
+    def test_attack_no_integer_in_current_hp(self):
         with self.assertRaises(TypeError):
             test_player = {"Current HP": 7.2}
             poison_room(test_player)
