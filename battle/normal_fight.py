@@ -208,11 +208,12 @@ def fight(player):
         guard = player_turn(int(choice), player, enemy)
         if enemy["hp"] > 0:
             enemy_attack(player, enemy, guard)
+
     if enemy["hp"] < 1:
         print(f'You have slain {enemy["name"]}!')
         player["exp"] += enemy["exp"]
         print(f'You have gained {enemy["exp"]} EXP!\n')
-    if not is_alive(player):
+    else:
         print("YOU HAVE DIED.")
 
 
