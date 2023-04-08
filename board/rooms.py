@@ -103,7 +103,12 @@ def potion_room(player: dict) -> None:
     >>> test_player["potions"]
     8
     """
-    player["potions"] += 3
+    if "potions" not in player:
+        raise KeyError("Read my docstrings, dummy.")
+    elif type(player["potions"]) != int:
+        raise TypeError("Read my docstrings, dummy.")
+    else:
+        player["potions"] += 3
 
 
 def atk_up_room(player: dict) -> None:
