@@ -2,7 +2,7 @@ import random
 
 
 from character.character import make_character
-from test_board import populate_board, import_room_templates, quote_strip
+from test_board import populate_board, import_room_templates, room_action
 
 
 def describe_current_location(board: dict, player: dict, room_list: dict) -> None:
@@ -239,21 +239,23 @@ def game():
     board = populate_board(rows, columns)
     character = make_character()
     room_list = import_room_templates()
-    room_list = quote_strip(room_list)
     achieved_goal = False
     while not achieved_goal and is_alive(character):
+        room_action(get_board_id(board, character), character)
         describe_current_location(board, character, room_list)
-
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
         else:
             print("You can't move that way!")
-
-        there_is_a_challenger = check_for_foes()
+        if get_board_id(board, character) == "bossroom":
+            boss_fight(character)
+        else:
+            there_is_a_challenger = check_for_foes()
         if there_is_a_challenger:
             guessing_game(character)
+        #     fight(character)
         achieved_goal = check_if_goal_attained(board, character)
     else:
         if not is_alive(character):

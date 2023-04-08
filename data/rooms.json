@@ -1,17 +1,22 @@
 {
   "fireroom": [
-    "The room is on fire, you take 2 damage!",
+    "The room is on fire, you take 5 damage!",
     "fireroom",
     1
   ],
   "healroom": [
-    "You are bathed in a warm light, you heal 2 HP",
+    "A warm light envlopes you, and you feel your wounds closing up!\nYou heal for 5 HP!",
     "healroom",
     3
   ],
-  "poisontrap": [
-    "The room fills with gas, you take 1 damage!",
+  "poisonroom": [
+    "Poison gas filled the air, you choke and take 2 damage!",
     "poisontrap",
     2
+  ],
+  "potionroom": [
+    "You found a treasure chest, you open it to find a few potions!",
+    "potionroom",
+    3
   ]
 }
