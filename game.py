@@ -21,13 +21,15 @@ def game():
     while not achieved_goal and is_alive(character):
         room_action(get_board_id(board, character), character)
         describe_current_location(board, character, room_list)
+        if get_board_id(board, character) != "start_room" and get_board_id(board, character) != "heal_sanctuary":
+            board[(character["X-coordinate"], character["Y-coordinate"])] = "empty_room"
         direction = get_user_choice()
         valid_move = validate_move(board, character, direction)
         if valid_move:
             move_character(character, direction)
         else:
             print("You can't move that way!\n")
-        if get_board_id(board, character) == "bossroom":
+        if get_board_id(board, character) == "boss_room":
             # boss_fight(character)
             pass
         else:

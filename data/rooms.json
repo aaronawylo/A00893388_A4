@@ -15,23 +15,28 @@
     2
   ],
   "potion_room": [
-    "You found a treasure chest, you open it to find a few potions!\n",
+    "You found a treasure chest, you open it to find a few potions!\nYour potion count has increased by 3!\n",
     "potion_room",
     3
   ],
   "atk_up_room": [
-    "You find a statue of Ares. You pray, and feel your muscles fill with power!\n",
+    "You find a statue of Ares. You pray, and feel your muscles fill with power!\nYour Attack has increased by 1!\n",
     "atk_up_room",
     2
   ],
   "def_up_room": [
-    "You find a statue of Athena. You pray, and feel your skin hardening like steel!\n",
+    "You find a statue of Athena. You pray, and feel your skin hardening like steel!\nYour Defense has increased by 1!\n",
     "def_up_room",
     2
   ],
     "hp_up_room": [
-    "You find a statue of Demeter. You pray, and feel boundless energy swell inside you!\n",
+    "You find a statue of Demeter. You pray, and feel boundless energy swell inside you!\nYour Max HP has increased by 20!\n",
     "hp_up_room",
     2
+  ],
+    "heal_sanctuary": [
+    "You find a warm bed and cozy fire.\nYou rest a while and recover back to full health!\n",
+    "heal_sanctuary",
+    1
   ]
 }

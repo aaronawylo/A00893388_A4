@@ -5,13 +5,22 @@ A0089388
 
 import random
 
-from board.rooms import fire_room, poison_room, heal_room, potion_room, atk_up_room, def_up_room, hp_up_room
+from board.rooms import fire_room, poison_room, heal_room, potion_room, atk_up_room, def_up_room, hp_up_room, \
+    heal_sanctuary
 from utilities.miscellaneous import open_json_file
 
 
 def room_action(room_name: str, player: dict):
+    """
+    Returns the function of the room the player is in
+
+    :param room_name: a string denoting the room name
+    :param player: a dictionary containing the keys "Current HP", "Max HP", "potions", "atk", and "def"
+    :return:
+    """
     room_actions = {"fire_room": fire_room, "poison_room": poison_room, "heal_room": heal_room, "potion_room":
-                    potion_room, "atk_up_room": atk_up_room, "def_up_room": def_up_room, "hp_up_room": hp_up_room}
+                    potion_room, "atk_up_room": atk_up_room, "def_up_room": def_up_room, "hp_up_room": hp_up_room,
+                    "heal_sanctuary": heal_sanctuary}
     if room_name in room_actions:
         return room_actions[room_name](player)
     else:
