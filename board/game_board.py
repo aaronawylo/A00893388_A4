@@ -66,7 +66,7 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
     :raises ValueError: if character coordinate values are not in the parameter of board
     >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'emptyroom'}
     >>> example_player = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
-    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroomfunction"]}
+    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroom", 3]}
     >>> describe_current_location(example_board, example_player, example_room_list)
     This is an empty room.
     You are currently at (0, 0)
@@ -74,7 +74,7 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
 
     >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'puppyroom'}
     >>> example_player = {"X-coordinate": 1, "Y-coordinate": 1, "Current HP": 5}
-    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroomfunction"], "puppyroom": ["PUPPIES."]}
+    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroom", 2], "puppyroom": ["PUPPIES."]}
     >>> describe_current_location(example_board, example_player, example_room_list)
     PUPPIES.
     You are currently at (1, 1)

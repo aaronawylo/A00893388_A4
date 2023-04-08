@@ -6,8 +6,8 @@ A0089388
 
 from Movement.movement import get_user_choice, validate_move, move_character
 from battle.normal_fight import fight
-from character.character import make_character, level_up, is_alive
-from board.board import populate_board, import_room_templates, room_action, get_board_id, describe_current_location
+from character.character_modules import make_character, level_up, is_alive
+from board.game_board import populate_board, import_room_templates, room_action, get_board_id, describe_current_location
 from utilities.miscellaneous import check_for_foes, check_if_goal_attained
 
 

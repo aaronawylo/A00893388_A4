@@ -1,7 +1,7 @@
 
 from unittest import TestCase
 
-from character.character import make_character
+from character.character_modules import make_character
 
 
 class TestMakeCharacter(TestCase):
