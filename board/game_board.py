@@ -12,11 +12,23 @@ from utilities.miscellaneous import open_json_file
 
 def room_action(room_name: str, player: dict):
     """
-    Returns the function of the room the player is in
+    Returns the function of the room the player is in if there is one
 
     :param room_name: a string denoting the room name
     :param player: a dictionary containing the keys "Current HP", "Max HP", "potions", "atk", and "def"
-    :return:
+    :precondition: room_name must be a string
+    :precondition: player must be a dictionary containing the keys "Current HP", "Max HP", "potions", "atk", and "def"
+    :postcondition: activates the room's special effect if it is a special room
+    :return: the function of the special room the player is in if there is one
+    >>> test_player = {"Max HP": 20, "Current HP": 10, "atk": 2, "def": 2, "potions": 3}
+    >>> room_action("fire_room", test_player)
+    >>> test_player["Current HP"]
+    5
+
+    >>> test_player = {"Max HP": 20, "Current HP": 20, "atk": 7, "def": 2, "potions": 3}
+    >>> room_action("atk_up_room", test_player)
+    >>> test_player["atk"]
+    8
     """
     room_actions = {"fire_room": fire_room, "poison_room": poison_room, "heal_room": heal_room, "potion_room":
                     potion_room, "atk_up_room": atk_up_room, "def_up_room": def_up_room, "hp_up_room": hp_up_room,
