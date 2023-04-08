@@ -1,7 +1,7 @@
 import random
 
-
-from character.character import make_character
+from battle.fight import fight
+from character.character import make_character, level_up
 from test_board import populate_board, import_room_templates, room_action
 
 
@@ -41,7 +41,7 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
     else:
         print(room_list[get_board_id(board, player)][0])
         print("You are currently at (" + str(player["X-coordinate"]) + ", " + str(player["Y-coordinate"]) + ")")
-        print("Your HP is: " + str(player["Current HP"]))
+        print("Your HP is: " + str(player["Current HP"]) + "\n")
 
 
 def get_board_id(board, player):
@@ -248,14 +248,16 @@ def game():
         if valid_move:
             move_character(character, direction)
         else:
-            print("You can't move that way!")
+            print("You can't move that way!\n")
         if get_board_id(board, character) == "bossroom":
-            boss_fight(character)
+            # boss_fight(character)
+            pass
         else:
             there_is_a_challenger = check_for_foes()
         if there_is_a_challenger:
-            guessing_game(character)
-        #     fight(character)
+            # guessing_game(character)
+            fight(character)
+        level_up(character)
         achieved_goal = check_if_goal_attained(board, character)
     else:
         if not is_alive(character):

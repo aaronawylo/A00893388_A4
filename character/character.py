@@ -14,7 +14,7 @@ def make_character() -> dict:
     {'X-coordinate': 0, 'Y-coordinate': 0, 'Max HP': 20, 'Current HP': 20, 'atk': 2, 'def': 1, 'level': 1, 'exp': 0, \
 'potions': 3, 'Battle Actions': ['Attack', 'Defend', 'Use Potion']}
     """
-    return {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "exp":
+    return {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 2, "level": 1, "exp":
             0, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
 
 
@@ -39,4 +39,11 @@ def is_alive(player: dict) -> bool:
 
 def level_up(player: dict):
     if player["exp"] >= 100:
-        pass
+        player["exp"] -= 100
+        player["Max HP"] += 20
+        player["Current HP"] += 20
+        player["atk"] += 3
+        player["def"] += 3
+        player["level"] += 1
+        print(f"You have gained a level, and you are level {player['level']}!\nYour Max HP is {player['Max HP']}!\nYour"
+              f" Attack is now {player['atk']}!\nYour Defense is now {player['def']}!\n")

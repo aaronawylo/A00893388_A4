@@ -202,7 +202,7 @@ def fight(player):
 
     print(f'You have encountered {enemy["name"]}!')
     while enemy["hp"] > 0 and is_alive(player):
-        print(f'Your HP is {player["Current HP"]}!\nThe {enemy["name"]}\'s HP is {enemy["hp"]}!')
+        print(f'Your HP is {player["Current HP"]}/{player["Max HP"]}!\nThe {enemy["name"]}\'s HP is {enemy["hp"]}!\n')
         print("Choose an action:")
         choice = action_select(player)
         guard = player_turn(int(choice), player, enemy)
@@ -211,7 +211,7 @@ def fight(player):
     if enemy["hp"] < 1:
         print(f'You have slain {enemy["name"]}!')
         player["exp"] += enemy["exp"]
-        print(f'You have gained {enemy["exp"]} EXP!')
+        print(f'You have gained {enemy["exp"]} EXP!\n')
     if not is_alive(player):
         print("YOU HAVE DIED.")
 
