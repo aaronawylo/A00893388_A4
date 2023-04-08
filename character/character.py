@@ -11,11 +11,11 @@ def make_character() -> dict:
     :postcondition: creates a character that starts at (0, 0) and contains all necessary information
     :return: a dictionary of a character that starts at (0, 0) and contains all necessary information
     >>> make_character()
-    {'X-coordinate': 0, 'Y-coordinate': 0, 'Max HP': 20, 'Current HP': 20, 'atk': 2, 'def': 1, 'level': 1, 'potions': \
-3, 'Battle Actions': ['Attack', 'Defend', 'Use Potion']}
+    {'X-coordinate': 0, 'Y-coordinate': 0, 'Max HP': 20, 'Current HP': 20, 'atk': 2, 'def': 1, 'level': 1, 'exp': 0, \
+'potions': 3, 'Battle Actions': ['Attack', 'Defend', 'Use Potion']}
     """
-    return {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1,
-            "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+    return {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "exp":
+            0, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
 
 
 def is_alive(player: dict) -> bool:
@@ -35,3 +35,8 @@ def is_alive(player: dict) -> bool:
     False
     """
     return player["Current HP"] > 0
+
+
+def level_up(player: dict):
+    if player["exp"] >= 100:
+        pass
