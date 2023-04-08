@@ -3,7 +3,7 @@ Aaron Lo
 A0089388
 """
 from unittest import TestCase
-from battle.fight import valid_battle_choice
+from battle.normal_fight import valid_battle_choice
 from unittest.mock import patch
 import io
 

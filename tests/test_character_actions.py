@@ -3,7 +3,7 @@ Aaron Lo
 A0089388
 """
 from unittest import TestCase
-from battle.fight import character_actions
+from battle.normal_fight import character_actions
 
 
 class TestCharacterActions(TestCase):

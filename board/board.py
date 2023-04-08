@@ -5,12 +5,13 @@ A0089388
 
 import random
 
-from board.rooms import fireroom, poisonroom, healroom
+from board.rooms import fireroom, poisonroom, healroom, potionroom, atkuproom, defuproom, hpuproom
 from utilities.miscellaneous import open_json_file
 
 
 def room_action(room_name: str, player: dict):
-    room_actions = {"fireroom": fireroom, "poisonroom": poisonroom, "healroom": healroom}
+    room_actions = {"fireroom": fireroom, "poisonroom": poisonroom, "healroom": healroom, "potionroom": potionroom,
+                    "atkuproom": atkuproom, "defuproom": defuproom, "hpuproom": hpuproom}
     if room_name in room_actions:
         return room_actions[room_name](player)
     else:

@@ -2,7 +2,7 @@
   "fireroom": [
     "The room is on fire, you take 5 damage!\n",
     "fireroom",
-    1
+    2
   ],
   "healroom": [
     "A warm light envlopes you, and you feel your wounds closing up!\n",
@@ -18,5 +18,20 @@
     "You found a treasure chest, you open it to find a few potions!\n",
     "potionroom",
     3
+  ],
+  "atkuproom": [
+    "You find a statue of Ares. You pray, and feel your muscles fill with power!\n",
+    "atkuproom",
+    2
+  ],
+  "defuproom": [
+    "You find a statue of Athena. You pray, and feel your skin hardening like steel!\n",
+    "defuproom",
+    2
+  ],
+    "hpuproom": [
+    "You find a statue of Demeter. You pray, and feel boundless energy swell inside you!\n",
+    "hpuproom",
+    2
   ]
 }

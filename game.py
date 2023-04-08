@@ -1,8 +1,8 @@
 import random
 
-from battle.fight import fight
+from battle.normal_fight import fight
 from character.character import make_character, level_up
-from test_board import populate_board, import_room_templates, room_action
+from board.board import populate_board, import_room_templates, room_action
 
 
 def describe_current_location(board: dict, player: dict, room_list: dict) -> None:

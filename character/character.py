@@ -45,5 +45,5 @@ def level_up(player: dict):
         player["atk"] += 3
         player["def"] += 3
         player["level"] += 1
-        print(f"You have gained a level, and you are level {player['level']}!\nYour Max HP is {player['Max HP']}!\nYour"
-              f" Attack is now {player['atk']}!\nYour Defense is now {player['def']}!\n")
+        print(f"You have gained a level, and you are now level {player['level']}!\nYour Max HP is {player['Max HP']}!\n"
+              f"Your Attack is now {player['atk']}!\nYour Defense is now {player['def']}!\n")

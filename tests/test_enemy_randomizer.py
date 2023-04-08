@@ -3,7 +3,7 @@ Aaron Lo
 A0089388
 """
 from unittest import TestCase
-from battle.fight import enemy_randomizer
+from battle.normal_fight import enemy_randomizer
 from unittest.mock import patch
 import io
 

@@ -3,9 +3,8 @@ Aaron Lo
 A0089388
 """
 from unittest import TestCase
-from battle.fight import action_select
+from battle.normal_fight import action_select
 from unittest.mock import patch
-import io
 
 
 class TestActionSelect(TestCase):
