@@ -1,17 +1,17 @@
 {
-  "startroom": [
+  "start_room": [
     "Smells like a brand new adventure.",
-    "startroom",
+    "start_room",
     1
   ],
-  "bossroom": [
+  "boss_room": [
     "You feel a sense of dread wash over you, it's time for the final showdown...",
-    "bossroom",
+    "boss_room",
     1
   ],
-  "emptyroom": [
+  "empty_room": [
     "An empty room, time to move to somewhere more exciting.",
-    "emptyroom",
+    "empty_room",
     0
   ]
 }

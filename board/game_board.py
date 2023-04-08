@@ -5,13 +5,13 @@ A0089388
 
 import random
 
-from board.rooms import fireroom, poisonroom, healroom, potionroom, atkuproom, defuproom, hpuproom
+from board.rooms import fire_room, poison_room, heal_room, potion_room, atk_up_room, def_up_room, hp_up_room
 from utilities.miscellaneous import open_json_file
 
 
 def room_action(room_name: str, player: dict):
-    room_actions = {"fireroom": fireroom, "poisonroom": poisonroom, "healroom": healroom, "potionroom": potionroom,
-                    "atkuproom": atkuproom, "defuproom": defuproom, "hpuproom": hpuproom}
+    room_actions = {"fire_room": fire_room, "poison_room": poison_room, "heal_room": heal_room, "potion_room":
+                    potion_room, "atk_up_room": atk_up_room, "def_up_room": def_up_room, "hp_up_room": hp_up_room}
     if room_name in room_actions:
         return room_actions[room_name](player)
     else:
@@ -31,7 +31,7 @@ def create_list_of_room_ids(templates, length):
     template_list = [key for key in templates for _ in range(templates[key][2])]
     empty_number = length - len(template_list) - 2
     while empty_number > 0:
-        template_list.append("emptyroom")
+        template_list.append("empty_room")
         empty_number -= 1
     return template_list
 
@@ -43,8 +43,8 @@ def populate_board(row, column):
     board_length = len(board_numbers)
     room_ids = create_list_of_room_ids(example_dictionary, board_length)
     random.shuffle(room_ids)
-    room_ids.insert(0, "startroom")
-    room_ids.append('bossroom')
+    room_ids.insert(0, "start_room")
+    room_ids.append('boss_room')
     final_board = dict(zip(board_numbers, room_ids))
     return final_board
 
@@ -64,21 +64,23 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
     :postcondition: returns the string description of the room the character is in
     :return: a string describing the room the character is in
     :raises ValueError: if character coordinate values are not in the parameter of board
-    >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'emptyroom'}
+    >>> example_board = {(0, 0): 'empty_room', (1, 0): 'empty_room', (0, 1): 'empty_room', (1, 1): 'empty_room'}
     >>> example_player = {"X-coordinate": 0, "Y-coordinate": 0, "Current HP": 5}
-    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroom", 3]}
+    >>> example_room_list = {"empty_room": ["This is an empty room.", "empty_room", 3]}
     >>> describe_current_location(example_board, example_player, example_room_list)
     This is an empty room.
     You are currently at (0, 0)
     Your HP is: 5
+    <BLANKLINE>
 
-    >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'puppyroom'}
+    >>> example_board = {(0, 0): 'empty_room', (1, 0): 'empty_room', (0, 1): 'empty_room', (1, 1): 'puppy_room'}
     >>> example_player = {"X-coordinate": 1, "Y-coordinate": 1, "Current HP": 5}
-    >>> example_room_list = {"emptyroom": ["This is an empty room.", "emptyroom", 2], "puppyroom": ["PUPPIES."]}
+    >>> example_room_list = {"empty_room": ["This is an empty room.", "empty_room", 2], "puppy_room": ["PUPPIES."]}
     >>> describe_current_location(example_board, example_player, example_room_list)
     PUPPIES.
     You are currently at (1, 1)
     Your HP is: 5
+    <BLANKLINE>
     """
     if (player["X-coordinate"], player["Y-coordinate"]) not in board:
         raise KeyError("Player is out of bounds")
@@ -98,15 +100,15 @@ def get_board_id(board, player):
     :precondition: player must contain two keys named "X-coordinate" and "Y-coordinate" with values in param board
     :postcondition: returns the value attached to the tuple coordinate key in board
     :return: the value attached to the tuple coordinate key in board
-    >>> example_board = {(0, 0): 'emptyroom', (1, 0): 'emptyroom', (0, 1): 'emptyroom', (1, 1): 'emptyroom'}
+    >>> example_board = {(0, 0): 'empty_room', (1, 0): 'empty_room', (0, 1): 'empty_room', (1, 1): 'empty_room'}
     >>> example_player = {"X-coordinate": 0, "Y-coordinate": 0}
     >>> get_board_id(example_board, example_player)
-    'emptyroom'
+    'empty_room'
 
-    >>> example_board = {(0, 0): 'puppyroom', (1, 0): 'kittyroom', (0, 1): 'birdyroom', (1, 1): 'foxroom'}
+    >>> example_board = {(0, 0): 'puppy_room', (1, 0): 'kitty_room', (0, 1): 'bird_room', (1, 1): 'fox_room'}
     >>> example_player = {"X-coordinate": 1, "Y-coordinate": 0}
     >>> get_board_id(example_board, example_player)
-    'kittyroom'
+    'kitty_room'
     """
     return board[(player["X-coordinate"], player["Y-coordinate"])]
 

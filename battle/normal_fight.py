@@ -10,7 +10,7 @@ from character.character_modules import is_alive
 from utilities.miscellaneous import populate_menu, menu_print, open_json_file
 
 character = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1,
-             "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+             "potions": 3, "exp": 0, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
 
 
 def enemy_randomizer(file_name) -> str:
@@ -186,7 +186,7 @@ def player_turn(choice: int, player: dict, enemy: dict):
     >>> test_enemy = {"name": "Slime", "hp": 10, "atk": 2, "exp": 20}
     >>> player_turn(3, test_player, test_enemy)
     You drank the potion and healed 0 HP!
-    Your HP is now 20
+    Your HP is now 20!
     0
     """
 

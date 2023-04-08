@@ -1,37 +1,37 @@
 {
-  "fireroom": [
+  "fire_room": [
     "The room is on fire, you take 5 damage!\n",
-    "fireroom",
+    "fire_room",
     2
   ],
-  "healroom": [
-    "A warm light envlopes you, and you feel your wounds closing up!\n",
-    "healroom",
+  "heal_room": [
+    "A warm light envelopes you, and you feel your wounds closing up!\n",
+    "heal_room",
     3
   ],
-  "poisonroom": [
+  "poison_room": [
     "Poison gas filled the air, you choke and take 2 damage!\n",
-    "poisontrap",
+    "poison_room",
     2
   ],
-  "potionroom": [
+  "potion_room": [
     "You found a treasure chest, you open it to find a few potions!\n",
-    "potionroom",
+    "potion_room",
     3
   ],
-  "atkuproom": [
+  "atk_up_room": [
     "You find a statue of Ares. You pray, and feel your muscles fill with power!\n",
-    "atkuproom",
+    "atk_up_room",
     2
   ],
-  "defuproom": [
+  "def_up_room": [
     "You find a statue of Athena. You pray, and feel your skin hardening like steel!\n",
-    "defuproom",
+    "def_up_room",
     2
   ],
-    "hpuproom": [
+    "hp_up_room": [
     "You find a statue of Demeter. You pray, and feel boundless energy swell inside you!\n",
-    "hpuproom",
+    "hp_up_room",
     2
   ]
 }

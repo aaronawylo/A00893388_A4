@@ -85,14 +85,14 @@ def potion(player: dict, _) -> int:
     :postcondition: recovers player's current HP by or up to max HP
     :postcondition: returns a guard value of zero
     :return: the integer zero
-    >>> test_player = {"Max HP": 20, "Current HP": 12, "potions": 3}
+    >>> test_player = {"Max HP": 20, "Current HP": 10, "potions": 3}
     >>> test_enemy = {"hp": 3}
     >>> potion(test_player, test_enemy)
-    You drank the potion and healed 5 HP!
-    Your HP is now 17!
+    You drank the potion and healed 10 HP!
+    Your HP is now 20!
     0
     >>> test_player["Current HP"]
-    17
+    20
 
     >>> test_player = {"Max HP": 30, "Current HP": 28, "potions": 2}
     >>> test_enemy = {"hp": 3}
