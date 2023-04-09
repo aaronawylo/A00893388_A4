@@ -18,6 +18,15 @@ class TestLevelUp(TestCase):
                     "level": 1, "exp": 0, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         self.assertEqual(actual, expected)
 
+    def test_level_up_max_level(self):
+        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
+                       "level": 3, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        level_up(test_player)
+        actual = test_player
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
+                    "level": 3, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        self.assertEqual(actual, expected)
+
     def test_level_up_values_equal(self):
         test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
                        "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}

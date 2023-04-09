@@ -70,7 +70,7 @@ def level_up(player: dict):
             raise KeyError("Read my docstrings, dummy.")
         if type(player[each]) != int:
             raise TypeError("Read my docstrings, dummy.")
-    if player["exp"] >= 100:
+    if player["exp"] >= 100 and player["level"] < 3:
         player["exp"] -= 100
         player["Max HP"] += 20
         player["Current HP"] += 20
