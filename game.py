@@ -5,6 +5,7 @@ A0089388
 
 
 from Movement.movement import get_user_choice, validate_move, move_character
+from battle.boss_fight import boss_fight
 from battle.normal_fight import fight
 from character.character_modules import make_character, level_up, is_alive
 from board.game_board import populate_board, import_room_templates, room_action, get_board_id, describe_current_location
@@ -30,8 +31,7 @@ def game():
         else:
             print(f"You can't move that way!\n")
         if get_board_id(board, character) == "boss_room":
-            # boss_fight(character)
-            pass
+            boss_fight(character)
         else:
             there_is_a_challenger = check_for_foes()
             if there_is_a_challenger:
@@ -42,7 +42,7 @@ def game():
         if not is_alive(character):
             print(f"Sorry you died, GITGUD. Run the program to try again!")
         else:
-            print(f"Congratulations, you beat the game!")
+            print(f"Congratulations, you have defeated Hades and escaped Hell!")
 
 
 def main():
