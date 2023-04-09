@@ -16,7 +16,7 @@ class TestUltCharge(TestCase):
         test_enemy = {"name": "Hades"}
         ult_charge(test_player, test_enemy, test_guard)
         actual = mock_output.getvalue()
-        expected = "Hades is gathering a massive amount of fire!\n"
+        expected = "Hades is gathering a massive amount of fire!\n\n"
         self.assertEqual(actual, expected)
 
     def test_ult_charge_need_a_name(self):

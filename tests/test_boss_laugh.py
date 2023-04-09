@@ -16,7 +16,7 @@ class TestBossLaugh(TestCase):
         test_enemy = {"name": "Hades"}
         boss_laugh(test_player, test_enemy, test_guard)
         actual = mock_output.getvalue()
-        expected = "Hades doubles over in laughter at your feeble attempt.\n"
+        expected = "Hades doubles over in laughter at your feeble attempt.\n\n"
         self.assertEqual(actual, expected)
 
     def test_boss_laugh_need_a_name(self):
