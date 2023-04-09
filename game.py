@@ -15,6 +15,7 @@ from utilities.miscellaneous import check_for_foes, check_if_goal_attained
 def game():
     rows = 5
     columns = 5
+    print(f"Tartarus is shifting once again...")
     board = populate_board(rows, columns)
     character = make_character()
     room_list = import_room_templates()
@@ -40,9 +41,11 @@ def game():
         achieved_goal = check_if_goal_attained(board, character)
     else:
         if not is_alive(character):
-            print(f"Sorry you died, GITGUD. Run the program to try again!")
+            print(f'You hear Chaos whisper to you "Rise once more, my champion, time to start again... (Run the program'
+                  f'again for another run!')
         else:
-            print(f"Congratulations, you have defeated Hades and escaped Hell!")
+            print(f"Congratulations, you have defeated Hades and escaped Hell! Now where is that Eris... (TO BE"
+                  f" CONTINUED")
 
 
 def main():
