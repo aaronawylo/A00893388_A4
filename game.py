@@ -45,7 +45,7 @@ def game():
                   f'again for another run!')
         else:
             print(f"Congratulations, you have defeated Hades and escaped Hell! Now where is that Eris... (TO BE"
-                  f" CONTINUED")
+                  f" CONTINUED)")
 
 
 def main():
