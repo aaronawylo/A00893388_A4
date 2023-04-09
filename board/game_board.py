@@ -40,8 +40,8 @@ def room_action(room_name: str, player: dict):
 
 
 def import_room_templates() -> dict:
-    dynamics_to_add = open_json_file('rooms.json')
-    statics_to_add = open_json_file('static_rooms.json')
+    dynamics_to_add = open_json_file('data/rooms.json')
+    statics_to_add = open_json_file('data/static_rooms.json')
     for every, item in statics_to_add.items():
         dynamics_to_add[every] = item
     return dynamics_to_add
@@ -59,7 +59,7 @@ def create_list_of_room_ids(templates, length):
 
 def populate_board(row, column):
 
-    example_dictionary = open_json_file('rooms.json')
+    example_dictionary = open_json_file('data/rooms.json')
     board_numbers = [(lateral, longitudinal) for longitudinal in range(column) for lateral in range(row)]
     board_length = len(board_numbers)
     room_ids = create_list_of_room_ids(example_dictionary, board_length)

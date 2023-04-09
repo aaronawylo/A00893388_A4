@@ -196,7 +196,7 @@ def player_turn(choice: int, player: dict, enemy: dict):
 
 def fight(player):
 
-    filename = enemy_randomizer("master_list.json")
+    filename = enemy_randomizer("data/master_list.json")
     with open(filename) as file_object:
         enemy = json.load(file_object)
 

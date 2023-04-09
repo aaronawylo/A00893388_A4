@@ -1,1 +1,1 @@
-{ "enemies": ["slime", "wolf", "knight"]}
+{ "enemies": ["data/slime", "data/wolf", "data/knight"]}
