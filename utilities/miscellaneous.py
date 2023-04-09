@@ -30,6 +30,21 @@ def menu_print(menu: dict) -> None:
 
 
 def populate_menu(menu_list: list) -> dict:
+    """
+    Return a dictionary of incrementing numbers from 1 as keys and a list as values
+
+    :param menu_list: an iterable that may be empty
+    :precondition: menu_list must be an iterable that may be empty
+    :postcondition: returns a dictionary of incrementing numbers from 1 as keys and a list as values
+    :return: a dictionary incrementing numbers from 1 as keys and a list as values
+    >>> test_list = ["First", "Second", "Third"]
+    >>> populate_menu(test_list)
+    {1: 'First', 2: 'Second', 3: 'Third'}
+
+    >>> test_list = [3, 2, 1]
+    >>> populate_menu(test_list)
+    {1: 3, 2: 2, 3: 1}
+    """
     return dict(enumerate(menu_list, 1))
 
 
