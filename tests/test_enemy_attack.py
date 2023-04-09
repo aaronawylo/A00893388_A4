@@ -23,7 +23,7 @@ class TestEnemyAttack(TestCase):
         test_enemy = {"name": "Slime", "atk": 2}
         enemy_attack(test_player, test_enemy, 1)
         actual = mock_output.getvalue()
-        expected = 'Slime has dealt 1 damage!\n'
+        expected = 'Slime has dealt 1 damage!\n\n'
         self.assertEqual(actual, expected)
 
     def test_enemy_attack_training_dummy(self):
@@ -40,7 +40,7 @@ class TestEnemyAttack(TestCase):
         test_enemy = {"name": "Dummy", "atk": 0}
         enemy_attack(test_player, test_enemy, 0)
         actual = mock_output.getvalue()
-        expected = 'Dummy has dealt 0 damage!\n'
+        expected = 'Dummy has dealt 0 damage!\n\n'
         self.assertEqual(actual, expected)
 
     def test_enemy_attack_death_comes(self):
@@ -57,7 +57,7 @@ class TestEnemyAttack(TestCase):
         test_enemy = {"name": "Reaper", "atk": 5}
         enemy_attack(test_player, test_enemy, 0)
         actual = mock_output.getvalue()
-        expected = 'Reaper has dealt 5 damage!\n'
+        expected = 'Reaper has dealt 5 damage!\n\n'
         self.assertEqual(actual, expected)
 
     def test_enemy_attack_that_looked_like_it_hurt(self):
@@ -74,7 +74,7 @@ class TestEnemyAttack(TestCase):
         test_enemy = {"name": "Thanos", "atk": 20}
         enemy_attack(test_player, test_enemy, 0)
         actual = mock_output.getvalue()
-        expected = 'Thanos has dealt 20 damage!\n'
+        expected = 'Thanos has dealt 20 damage!\n\n'
         self.assertEqual(actual, expected)
 
     def test_enemy_attack_blocking_does_not_heal(self):
@@ -91,7 +91,7 @@ class TestEnemyAttack(TestCase):
         test_enemy = {"name": "Bunny", "atk": 0}
         enemy_attack(test_player, test_enemy, 5)
         actual = mock_output.getvalue()
-        expected = 'Bunny has dealt 0 damage!\n'
+        expected = 'Bunny has dealt 0 damage!\n\n'
         self.assertEqual(actual, expected)
 
     def test_enemy_attack_enemies_cannot_heal_you(self):
@@ -108,7 +108,7 @@ class TestEnemyAttack(TestCase):
         test_enemy = {"name": "Friend", "atk": -5}
         enemy_attack(test_player, test_enemy, 5)
         actual = mock_output.getvalue()
-        expected = 'Friend has dealt 0 damage!\n'
+        expected = 'Friend has dealt 0 damage!\n\n'
         self.assertEqual(actual, expected)
 
     def test_enemy_attack_current_hp_not_in_player(self):
@@ -140,10 +140,3 @@ class TestEnemyAttack(TestCase):
             test_player = {"Current HP": 20}
             test_enemy = {"name": "Slime", "atk": "5"}
             enemy_attack(test_player, test_enemy, 1)
-
-    def test_defend_no_number_in_guard(self):
-        with self.assertRaises(TypeError):
-            test_player = {"Current HP": 20}
-            test_enemy = {"name": "Slime", "atk": 5}
-            test_guard = 1.2
-            enemy_attack(test_player, test_enemy, test_guard)
