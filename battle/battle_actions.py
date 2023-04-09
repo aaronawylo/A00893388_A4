@@ -135,6 +135,7 @@ def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
     >>> test_enemy = {"name": "Slime", "atk": 2}
     >>> enemy_attack(test_player, test_enemy, 1)
     Slime has dealt 1 damage!
+    <BLANKLINE>
     >>> test_player["Current HP"]
     11
 
@@ -142,6 +143,7 @@ def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
     >>> test_enemy = {"name": "Wolf", "atk": 4}
     >>> enemy_attack(test_player, test_enemy, 2)
     Wolf has dealt 2 damage!
+    <BLANKLINE>
     >>> test_player["Current HP"]
     3
     """
@@ -153,4 +155,4 @@ def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
     if enemy_damage < 0:
         enemy_damage = 0
     player["Current HP"] -= enemy_damage
-    print(f'{enemy["name"]} has dealt {enemy_damage} damage!')
+    print(f'{enemy["name"]} has dealt {enemy_damage} damage!\n')
