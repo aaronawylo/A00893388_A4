@@ -1,9 +1,30 @@
+"""
+Aaron Lo
+A0089388
+"""
 import os
 import json
 import random
 
 
 def menu_print(menu: dict) -> None:
+    """
+    Prints out the dictionary
+
+    :param menu: must be a dictionary with at least one key value pair
+    :precondition: menu must be a dictionary with at least one key value pair
+    :postcondition: outputs the menu to the screen
+    >>> test_menu = {"This": "Is", "A": "Menu"}
+    >>> menu_print(test_menu)
+    This: Is
+    A: Menu
+
+    >>> test_menu = {"Testing": "Testing", "One": "Two", "Three": ":)"}
+    >>> menu_print(test_menu)
+    Testing: Testing
+    One: Two
+    Three: :)
+    """
     for every in menu:
         print(f"{every}: {menu[every]}")
 
