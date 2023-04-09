@@ -49,6 +49,15 @@ def populate_menu(menu_list: list) -> dict:
 
 
 def open_json_file(file_name: str) -> dict:
+    """
+    Reads file_name.json and returns it as a dictionary
+
+    :param file_name: must be a string of a json file
+    :precondition: file_name must be a string of a json file
+    :precondition: file_name must exist
+    :postcondition: returns the json file in python dictionary
+    :return: a dictionary of the json file
+    """
     if not os.path.isfile(file_name):
         raise FileNotFoundError("Your file doesn't exist :)")
     else:
