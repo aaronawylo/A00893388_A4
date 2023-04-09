@@ -16,8 +16,8 @@ def boss_fight(player):
     attack_pattern = cycle([enemy_attack, boss_laugh, enemy_attack, ult_charge, ult_move])
     print(f'{boss["name"]} stands before you.')
     while boss["hp"] > 0 and is_alive(player):
-        print(f'Your HP is {player["Current HP"]}/{player["Max HP"]}!\nThe {boss["name"]}\'s HP is {boss["hp"]}!\n')
-        print(f"Choose an action:")
+        print(f'Your HP is {player["Current HP"]}/{player["Max HP"]}!\n{boss["name"]}\'s HP is {boss["hp"]}!\n'
+              f'You have {player["potions"]} potions in your bag!\n\nChoose an action:')
         choice = action_select(player)
         guard = player_turn(int(choice), player, boss)
         if boss["hp"] > 0:
