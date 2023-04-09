@@ -9,9 +9,6 @@ from battle.battle_actions import attack, defend, potion, enemy_attack
 from character.character_modules import is_alive
 from utilities.miscellaneous import populate_menu, menu_print, open_json_file
 
-character = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1,
-             "potions": 3, "exp": 0, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-
 
 def enemy_randomizer(file_name) -> str:
     """
