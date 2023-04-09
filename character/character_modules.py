@@ -38,6 +38,38 @@ def is_alive(player: dict) -> bool:
 
 
 def level_up(player: dict):
+    """
+    Increases the player's level by one, the attack and defense stats by 3, and the two HP values by 20
+
+    :param player: a dictionary containing the key values of "exp", "Max HP", "Current HP", "atk", "def" and "level"
+    :precondition: player must be a dictionary containing "exp", "Max HP", "Current HP", "atk", "def" and "level"
+    :precondition: the keys must have integer values
+    :postcondition: levels up the player and increases the stats accordingly and reduces "exp" by 100
+    >>> test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, \
+                       "level": 1, "exp": 0, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+    >>> level_up(test_player)
+    >>> test_player
+    {'X-coordinate': 0, 'Y-coordinate': 0, 'Max HP': 20, 'Current HP': 20, 'atk': 2, 'def': 1, 'level': 1, 'exp': 0, \
+'potions': 3, 'Battle Actions': ['Attack', 'Defend', 'Use Potion']}
+
+    >>> test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, \
+                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+    >>> level_up(test_player)
+    You have gained a level, and you are now level 2!
+    Your Max HP is 40!
+    Your Attack is now 5!
+    Your Defense is now 4!
+    <BLANKLINE>
+    >>> test_player
+    {'X-coordinate': 0, 'Y-coordinate': 0, 'Max HP': 40, 'Current HP': 40, 'atk': 5, 'def': 4, 'level': 2, 'exp': 10, \
+'potions': 3, 'Battle Actions': ['Attack', 'Defend', 'Use Potion']}
+    """
+    error_check = ("exp", "Max HP", "Current HP", "atk", "def", "level")
+    for each in error_check:
+        if each not in player:
+            raise KeyError("Read my docstrings, dummy.")
+        if type(player[each]) != int:
+            raise TypeError("Read my docstrings, dummy.")
     if player["exp"] >= 100:
         player["exp"] -= 100
         player["Max HP"] += 20
