@@ -13,12 +13,12 @@ def get_user_choice() -> int:
     """
 
     directions = {"1": "North", "2": "East", "3": "South", "4": "West"}
-    print("Enter a number for the direction you want:")
+    print(f"Enter a number for the direction you want:")
     for key in directions:
         print(key + " : " + directions[key])
     movement = input()
     while movement not in directions:
-        print("That is not a valid numeric choice, please select from the following:")
+        print(f"That is not a valid numeric choice, please select from the following:")
         for key in directions:
             print(key + " : " + directions[key])
         movement = input()

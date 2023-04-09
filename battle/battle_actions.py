@@ -70,7 +70,7 @@ def defend(player: dict, _) -> int:
     elif type(player["level"]) != int or type(player["def"]) != int:
         raise TypeError("Read my docstrings, dummy.")
     else:
-        print("You steel yourself for the oncoming attack!")
+        print(f"You steel yourself for the oncoming attack!")
         return player["level"] * player["def"]
 
 

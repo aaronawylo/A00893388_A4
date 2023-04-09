@@ -5,7 +5,7 @@ import random
 
 def menu_print(menu: dict) -> None:
     for every in menu:
-        print(str(every) + ":", menu[every])
+        print(f"{every}: {menu[every]}")
 
 
 def populate_menu(menu_list: list) -> dict:

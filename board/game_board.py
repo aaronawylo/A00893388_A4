@@ -107,8 +107,8 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
         raise KeyError("Player is out of bounds")
     else:
         print(room_list[get_board_id(board, player)][0])
-        print("You are currently at (" + str(player["X-coordinate"]) + ", " + str(player["Y-coordinate"]) + ")")
-        print("Your HP is: " + str(player["Current HP"]) + "\n")
+        print(f"You are currently at ({player['X-coordinate']}, {player['Y-coordinate']})")
+        print(f"Your HP is: {player['Current HP']}\n")
 
 
 def get_board_id(board, player):

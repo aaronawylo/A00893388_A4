@@ -28,7 +28,7 @@ def game():
         if valid_move:
             move_character(character, direction)
         else:
-            print("You can't move that way!\n")
+            print(f"You can't move that way!\n")
         if get_board_id(board, character) == "boss_room":
             # boss_fight(character)
             pass
@@ -40,9 +40,9 @@ def game():
         achieved_goal = check_if_goal_attained(board, character)
     else:
         if not is_alive(character):
-            print("Sorry you died, GITGUD. Run the program to try again!")
+            print(f"Sorry you died, GITGUD. Run the program to try again!")
         else:
-            print("Congratulations, you beat the game!")
+            print(f"Congratulations, you beat the game!")
 
 
 def main():

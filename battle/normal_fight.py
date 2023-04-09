@@ -64,11 +64,11 @@ def valid_battle_choice(menu: dict, choice: str) -> bool:
     try:
         choice = int(choice)
     except ValueError:
-        print("That is not a valid numeric choice, please select from the following:")
+        print(f"That is not a valid numeric choice, please select from the following:")
         return False
     else:
         if int(choice) not in menu:
-            print("That is not a valid numeric choice, please select from the following:")
+            print(f"That is not a valid numeric choice, please select from the following:")
             return False
         else:
             return True
@@ -104,7 +104,7 @@ def potion_check(player: dict, choice: str) -> bool:
         raise KeyError("Make a better character!")
     else:
         if choice == '3' and player["potions"] < 1:
-            print("You're out of potions! Do something else!")
+            print(f"You're out of potions! Do something else!")
             return False
         else:
             return True
@@ -203,7 +203,7 @@ def fight(player):
     print(f'You have encountered {enemy["name"]}!')
     while enemy["hp"] > 0 and is_alive(player):
         print(f'Your HP is {player["Current HP"]}/{player["Max HP"]}!\nThe {enemy["name"]}\'s HP is {enemy["hp"]}!\n')
-        print("Choose an action:")
+        print(f"Choose an action:")
         choice = action_select(player)
         guard = player_turn(int(choice), player, enemy)
         if enemy["hp"] > 0:
@@ -214,7 +214,7 @@ def fight(player):
         player["exp"] += enemy["exp"]
         print(f'You have gained {enemy["exp"]} EXP!\n')
     else:
-        print("YOU HAVE DIED.")
+        print(f"YOU HAVE DIED.")
 
 
 def main():
