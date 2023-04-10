@@ -32,3 +32,19 @@ muster up whatever courage you have, and enter:
 
 Tartarus, The Labrynth of Hades.
 ===============================
+
+## Rubric Requirements:
+|      Elements       |        Module Name         | Line Number |        Function Name         |
+|:-------------------:|:--------------------------:|:-----------:|:----------------------------:|
+|      5x5 Board      |    board.game_board.py     |     98      |        populate_board        |
+|    Gameplay Ends    | utilities.miscellaneous.py |     69      |    check_if_goal_attained    |
+|   Player Movement   |     Movement.movement      |    28/61    | validate_move/move_character |
+|     Challenges      |    battle.normal_fight     |     13      |       enemy_randomizer       |
+| Dict Comprehension  |    board.game_board.py     |     110     |        populate_board        |
+|    if-statement     |   battle.normal_fight.py   |     214     |            fight             |
+|   for/while loop    |   battle.normal_fight.py   |     148     |        action_select         |
+| membership operator | utilities.miscellaneous.py |     28      |          menu_print          |
+|        range        |    board.game_board.py     |     110     |        populate_board        |
+| itertools function  |    battle.boss_fight.py    |     23      |          boss_fight          |
+|    random module    | utilities.miscellaneous.py |     104     |        check_for_foes        |
+|      f-string       |   battle.normal_fight.py   |   208/209   |            fight             |
