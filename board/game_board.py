@@ -95,7 +95,7 @@ def create_list_of_room_ids(templates: dict, length: int) -> list:
                 return template_list
 
 
-def populate_board(row, column):
+def populate_board(row: int, column: int) -> dict:
     """
     Create a dictionary of tuples for keys and room ids for values with "start_room" and "boss_room" to bookend
 
@@ -160,7 +160,7 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
         print(f"Your HP is: {player['Current HP']}\n")
 
 
-def get_board_id(board, player):
+def get_board_id(board: dict, player: dict) -> str:
     """
     Returns the value of attached to the key where the player is currently
 
