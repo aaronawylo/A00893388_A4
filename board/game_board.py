@@ -96,7 +96,16 @@ def create_list_of_room_ids(templates: dict, length: int) -> list:
 
 
 def populate_board(row, column):
+    """
+    Create a dictionary of tuples for keys and room ids for values with "start_room" and "boss_room" to bookend
 
+    :param row: must be an integer
+    :param column: must be an integer
+    :precondition: row must be a positive integer
+    :precondition: column must be a positive integer
+    :postcondition: returns a dictionary of tuples as keys and room ids as values including "start_room" and "boss_room"
+    :return: a dictionary of tuples as keys and room ids as values including "start_room" and "boss_room
+    """
     example_dictionary = open_json_file('data/rooms.json')
     board_numbers = [(lateral, longitudinal) for longitudinal in range(column) for lateral in range(row)]
     board_length = len(board_numbers)
