@@ -180,7 +180,10 @@ def get_board_id(board, player):
     >>> get_board_id(example_board, example_player)
     'kitty_room'
     """
-    return board[(player["X-coordinate"], player["Y-coordinate"])]
+    if (player["X-coordinate"], player["Y-coordinate"]) not in board:
+        raise KeyError("Player is out of bounds")
+    else:
+        return board[(player["X-coordinate"], player["Y-coordinate"])]
 
 
 def main():
