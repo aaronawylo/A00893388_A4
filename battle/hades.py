@@ -105,3 +105,15 @@ def ult_move(player: dict, enemy: dict, guard: int) -> None:
             enemy_damage = 0
         player["Current HP"] -= enemy_damage
         print(f'{enemy["name"]} unleashes all of his built-up energy!\nYou took {enemy_damage} damage!\n')
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()

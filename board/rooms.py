@@ -220,3 +220,15 @@ def heal_sanctuary(player: dict) -> None:
         raise TypeError("Read my docstrings, dummy.")
     else:
         player["Current HP"] = player["Max HP"]
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()

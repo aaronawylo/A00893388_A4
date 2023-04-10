@@ -83,3 +83,15 @@ def move_character(character: dict, direction: int) -> None:
     movement_value = {1: (0, -1), 2: (1, 0), 3: (0, 1), 4: (-1, 0)}
     character["X-coordinate"] += movement_value[direction][0]
     character["Y-coordinate"] += movement_value[direction][1]
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()

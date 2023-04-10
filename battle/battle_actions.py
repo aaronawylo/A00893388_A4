@@ -156,3 +156,15 @@ def enemy_attack(player: dict, enemy: dict, guard: int) -> None:
         enemy_damage = 0
     player["Current HP"] -= enemy_damage
     print(f'{enemy["name"]} has dealt {enemy_damage} damage!\n')
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()

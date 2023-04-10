@@ -106,3 +106,15 @@ def check_for_foes() -> bool:
         return True
     else:
         return False
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()

@@ -49,8 +49,11 @@ def game():
 
 
 def main():
+    """
+    Drives the program
+    """
 
-    game()
+    pass
 
 
 if __name__ == "__main__":

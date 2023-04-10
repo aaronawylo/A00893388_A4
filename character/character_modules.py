@@ -37,7 +37,7 @@ def is_alive(player: dict) -> bool:
     return player["Current HP"] > 0
 
 
-def level_up(player: dict):
+def level_up(player: dict) -> None:
     """
     Increases the player's level by one, the attack and defense stats by 3, and the two HP values by 20
 
@@ -79,3 +79,15 @@ def level_up(player: dict):
         player["level"] += 1
         print(f"You have gained a level, and you are now level {player['level']}!\nYour Max HP is {player['Max HP']}!\n"
               f"Your Attack is now {player['atk']}!\nYour Defense is now {player['def']}!\n")
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()

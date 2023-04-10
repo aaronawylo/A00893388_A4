@@ -33,3 +33,15 @@ def boss_fight(player) -> None:
         print(f'{boss["name"]} screams out in agony and fades into nothingness...')
     else:
         print(f"YOU HAVE DIED.")
+
+
+def main():
+    """
+    Drives the program
+    """
+
+    pass
+
+
+if __name__ == "__main__":
+    main()
