@@ -19,4 +19,3 @@ class TestGetBoardID(TestCase):
             example_board = {(0, 0): 'empty_room', (1, 0): 'empty_room', (0, 1): 'empty_room', (1, 1): 'empty_room'}
             example_player = {"X-coordinate": 2, "Y-coordinate": 2}
             get_board_id(example_board, example_player)
-
