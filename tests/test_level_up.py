@@ -32,107 +32,71 @@ class TestLevelUp(TestCase):
                        "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level":
+                    2, "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         self.assertEqual(actual, expected)
 
     def test_level_up_length_equal(self):
         test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+                       "level": 1, "exp": 110, "potions": 3}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level":
+                    2, "exp": 10, "potions": 3}
         self.assertEqual(len(actual), len(expected))
-
-    def test_level_up_x_coordinate_value(self):
-        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        level_up(test_player)
-        actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        self.assertEqual(actual["X-coordinate"], expected["X-coordinate"])
-
-    def test_level_up_y_coordinate_value(self):
-        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        level_up(test_player)
-        actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        self.assertEqual(actual["Y-coordinate"], expected["Y-coordinate"])
 
     def test_level_up_max_health_value(self):
         test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level":
+                    2, "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend"]}
         self.assertEqual(actual["Max HP"], expected["Max HP"])
 
     def test_level_up_current_health_value(self):
         test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Use Potion"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level":
+                    2, "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Use Potion"]}
         self.assertEqual(actual["Current HP"], expected["Current HP"])
 
     def test_level_up_atk_value(self):
-        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
+        test_player = {"X-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
                        "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2, "exp": 10,
+                    "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         self.assertEqual(actual["atk"], expected["atk"])
 
     def test_level_up_def_value(self):
-        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
+        test_player = {"Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
                        "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2, "exp": 10,
+                    "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
         self.assertEqual(actual["def"], expected["def"])
 
     def test_level_up_level_value(self):
         test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Defend", "Use Potion"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level":
+                    2, "exp": 10, "potions": 3, "Battle Actions": ["Defend", "Use Potion"]}
         self.assertEqual(actual["level"], expected["level"])
-
-    def test_level_up_potions_value(self):
-        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        level_up(test_player)
-        actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        self.assertEqual(actual["potions"], expected["potions"])
-
-    def test_level_up_battle_actions_value(self):
-        test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        level_up(test_player)
-        actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
-        self.assertEqual(actual["Battle Actions"], expected["Battle Actions"])
 
     def test_level_up_exp_value(self):
         test_player = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 20, "Current HP": 20, "atk": 2, "def": 1,
-                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+                       "level": 1, "exp": 110, "potions": 3, "Battle Actions": ["Attack"]}
         level_up(test_player)
         actual = test_player
-        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level": 2
-                    , "exp": 10, "potions": 3, "Battle Actions": ["Attack", "Defend", "Use Potion"]}
+        expected = {"X-coordinate": 0, "Y-coordinate": 0, "Max HP": 40, "Current HP": 40, "atk": 5, "def": 4, "level":
+                    2, "exp": 10, "potions": 3, "Battle Actions": ["Attack"]}
         self.assertEqual(actual["exp"], expected["exp"])
 
     @patch('sys.stdout', new_callable=io.StringIO)
