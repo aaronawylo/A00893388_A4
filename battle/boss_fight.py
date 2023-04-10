@@ -10,8 +10,15 @@ from utilities.miscellaneous import open_json_file
 from itertools import cycle
 
 
-def boss_fight(player):
+def boss_fight(player) -> None:
+    """
+    Executes a battle routine to the death for the player against Hades.
 
+    :param player: a dictionary containing keys of "Max HP", "Current HP", "atk", "def", "level", "potions", and "exp"
+    :precondition: player must be a dictionary with "Max HP", "Current HP", "atk", "def", "level", "potions", and "exp"
+    :precondition: keys in player must have integer values
+    :postcondition: loops the boss battle until either the player or the boss has died
+    """
     boss = open_json_file("data/hades.json")
     attack_pattern = cycle([enemy_attack, boss_laugh, enemy_attack, ult_charge, ult_move])
     print(f'{boss["name"]} stands before you.')

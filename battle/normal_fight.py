@@ -178,7 +178,6 @@ def player_turn(choice: int, player: dict, enemy: dict):
     You steel yourself for the oncoming attack!
     1
 
-
     >>> test_player = {"Max HP": 20, "Current HP": 20, "atk": 2, "def": 1, "level": 1, "potions": 3}
     >>> test_enemy = {"name": "Slime", "hp": 10, "atk": 2, "exp": 20}
     >>> player_turn(3, test_player, test_enemy)
@@ -192,7 +191,14 @@ def player_turn(choice: int, player: dict, enemy: dict):
 
 
 def fight(player):
+    """
+    Executes a battle routine to the death for the player against a random enemy.
 
+    :param player: a dictionary containing keys of "Max HP", "Current HP", "atk", "def", "level", "potions", and "exp"
+    :precondition: player must be a dictionary with "Max HP", "Current HP", "atk", "def", "level", "potions", and "exp"
+    :precondition: keys in player must have integer values
+    :postcondition: loops the battle until either the player or the boss has died
+    """
     filename = enemy_randomizer("data/master_list.json")
     with open(filename) as file_object:
         enemy = json.load(file_object)

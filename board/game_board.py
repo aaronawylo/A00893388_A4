@@ -40,6 +40,15 @@ def room_action(room_name: str, player: dict):
 
 
 def import_room_templates() -> dict:
+    """
+    Returns a template list of rooms with the static rooms with no functions attached
+
+    :precondition: rooms.json must exist
+    :precondition: static_rooms.json must exist
+    :precondition: both json files must have a dictionary of rooms to add
+    :postcondition: returns a dictionary of combined rooms.json and static_rooms.json
+    :return: a dictionary of combined rooms.json and static_rooms.json
+    """
     dynamics_to_add = open_json_file('data/rooms.json')
     statics_to_add = open_json_file('data/static_rooms.json')
     for every, item in statics_to_add.items():
@@ -47,14 +56,43 @@ def import_room_templates() -> dict:
     return dynamics_to_add
 
 
-def create_list_of_room_ids(templates, length):
+def create_list_of_room_ids(templates: dict, length: int) -> list:
+    """
+    Creates a list with a length two less than the given length of all the room IDs
 
-    template_list = [key for key in templates for _ in range(templates[key][2])]
-    empty_number = length - len(template_list) - 2
-    while empty_number > 0:
-        template_list.append("empty_room")
-        empty_number -= 1
-    return template_list
+    :param templates: a dictionary with an integer at index 2
+    :param length: a positive integer
+    :precondition: templates must be a non-empty dictionary
+    :precondition: templates must have values at index 2
+    :precondition: the value at index 2 in templates must be an integer
+    :precondition: length must be a positive integer more than 2 greater than the length of templates
+    :postcondition: returns a list of all room IDs comprised of keys from the given list and empty_room
+    :return: a list of room IDs comprised of keys from the given list and empty_room
+    >>> example_templates = {"fire_room": ["This is a fire_room", "fire_room", 2], "pup_room": ["This is a smoke_room",\
+                             "smoke_room", 1]}
+    >>> create_list_of_room_ids(example_templates, 7)
+    ['fire_room', 'fire_room', 'pup_room', 'empty_room', 'empty_room']
+
+    >>> example_templates = {"cat_room": ["This is a cat_room", "cat_room", 1], "bird_room": ["This is a bird_room", \
+                              "bird_room", 1]}
+    >>> create_list_of_room_ids(example_templates, 4)
+    ['cat_room', 'bird_room']
+    """
+    if len(templates) <= 0:
+        raise KeyError("Read my docstrings, dummy.")
+    else:
+        for value in templates.values():
+            if len(value) < 3:
+                raise IndexError("Read my docstrings, dummy.")
+            else:
+                template_list = [key for key in templates for _ in range(templates[key][2])]
+                if (length - 2) < len(template_list):
+                    raise ValueError("Read my docstrings, dummy.")
+                empty_number = length - len(template_list) - 2
+                while empty_number > 0:
+                    template_list.append("empty_room")
+                    empty_number -= 1
+                return template_list
 
 
 def populate_board(row, column):
