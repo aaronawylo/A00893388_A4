@@ -13,6 +13,9 @@ from utilities.miscellaneous import check_for_foes, check_if_goal_attained
 
 
 def game():
+    """
+    Plays the game Tartarus, The Labrynth of Hades
+    """
     rows = 5
     columns = 5
     print(f"Tartarus is shifting once again...")
