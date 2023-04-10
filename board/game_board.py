@@ -152,6 +152,8 @@ def describe_current_location(board: dict, player: dict, room_list: dict) -> Non
     """
     if (player["X-coordinate"], player["Y-coordinate"]) not in board:
         raise KeyError("Player is out of bounds")
+    elif get_board_id(board, player) not in room_list:
+        raise KeyError("That room doesn't exist in your room_list")
     else:
         print(room_list[get_board_id(board, player)][0])
         print(f"You are currently at ({player['X-coordinate']}, {player['Y-coordinate']})")
