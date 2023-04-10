@@ -187,8 +187,11 @@ def get_board_id(board: dict, player: dict) -> str:
 
 
 def main():
+    """
+    Drives the program
+    """
 
-    print(populate_board(5, 5))
+    pass
 
 
 if __name__ == "__main__":
